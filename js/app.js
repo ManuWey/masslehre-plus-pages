@@ -87,26 +87,62 @@ function display(v){
   return String(v);
 }
 function inputMarkup(sheet,input){
-  const addr=input.cell, fieldName=input.name||addr, label=input.label||input.name||labelFromCell(sheet,addr), val=getValue(sheet.name,addr), typ=inputType(input), opts=parseOptions(input.validation,sheet.name,addr);
-  const ariaLabel=`${label}, Feldname ${fieldName}`;
+  const addr=input.cell, label=input.label||labelFromCell(sheet,addr), val=getValue(sheet.name,addr), typ=inputType(input), opts=parseOptions(input.validation,sheet.name,addr);
   let control="";
   if(typ==="select"&&opts){
-    control=`<select name="${esc(fieldName)}" aria-label="${esc(ariaLabel)}" data-cell="${esc(addr)}">${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
+    control=`<select name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}">${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
   }else{
-    control=`<input name="${esc(fieldName)}" aria-label="${esc(ariaLabel)}" data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="any" value="${esc(val??"")}" placeholder="Wert eingeben">`;
+    control=`<input name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="any" value="${esc(val??"")}" placeholder="Wert eingeben">`;
   }
-  return `<label class="field"><span class="field-caption"><span class="field-label">${esc(label)}</span><small class="field-name">Feldname: ${esc(fieldName)}</small></span>${control}</label>`;
+  return `<label class="field"><span class="field-caption"><span class="field-label">${esc(label)}</span></span>${control}</label>`;
+}
+function measureAxis(sheet,addr){
+  const match=addr.match(/^([A-Z]+)(\d+)$/);if(!match)return "";
+  const row=Number(match[2]),col=colNum(match[1]);
+  for(let c=col-1;c>=1;c--){
+    const cell=sheet.cells[letter(c)+row];
+    if(!cell||cell.formula||cell.value===null||cell.value===undefined)continue;
+    const marker=String(cell.value).trim().toUpperCase();
+    if(marker==="B")return "Breite";
+    if(marker==="H")return "Höhe";
+    if(marker)return "";
+  }
+  return "";
+}
+function pairedOutputGroups(sheet,formulas){
+  const groups=[],claimed=new Set();
+  for(const range of sheet.mergedRanges||[]){
+    const match=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!match)continue;
+    const startCol=colNum(match[1]),startRow=Number(match[2]),endCol=colNum(match[3]),endRow=Number(match[4]);
+    if(endRow<=startRow)continue;
+    const labelCell=sheet.cells[match[1]+startRow];
+    const label=labelCell&&!labelCell.formula&&typeof labelCell.value==="string"?labelCell.value.trim():"";
+    if(!label)continue;
+    const items=formulas.filter(([addr])=>{
+      const cell=addr.match(/^([A-Z]+)(\d+)$/);if(!cell)return false;
+      const row=Number(cell[2]),col=colNum(cell[1]);
+      return row>=startRow&&row<=endRow&&col>endCol&&Boolean(measureAxis(sheet,addr));
+    });
+    const axes=items.map(([addr])=>measureAxis(sheet,addr));
+    if(!axes.includes("Breite")||!axes.includes("Höhe"))continue;
+    groups.push({label,items,axisLabels:true});
+    for(const [addr] of items)claimed.add(addr);
+  }
+  return {groups,claimed};
 }
 function outputRows(sheet,book){
-  const rows=[];
-  for(let r=1;r<=sheet.maxRow;r++){
-    const formulas=Object.entries(sheet.cells).filter(([a,c])=>a.match(/\d+$/)&&Number(a.match(/\d+$/)[0])===r&&c.formula);
-    if(!formulas.length)continue;
-    const vals=formulas.map(([a,c])=>({addr:a,value:book.value(sheet.name,a)}));
-    const label=labelFromCell(sheet,vals[0].addr);
-    rows.push(`<div class="result-row"><div class="result-label">${esc(label||"Ergebnis")}</div><div class="result-values">${vals.map(v=>`<div class="result-value"><span class="result-name">Feldname: ${esc(v.addr)}</span><strong>${esc(display(v.value))}</strong></div>`).join("")}</div></div>`);
+  const formulas=Object.entries(sheet.cells).filter(([,cell])=>cell.formula).sort(([a],[b])=>{
+    const ma=a.match(/^([A-Z]+)(\d+)$/),mb=b.match(/^([A-Z]+)(\d+)$/);
+    return Number(ma?.[2]||0)-Number(mb?.[2]||0)||colNum(ma?.[1]||"A")-colNum(mb?.[1]||"A");
+  });
+  const paired=pairedOutputGroups(sheet,formulas);
+  const rows=[...paired.groups.map(group=>({row:Number(group.items[0][0].match(/\d+$/)[0]),label:group.label,items:group.items,axisLabels:true}))];
+  for(const [addr] of formulas){
+    if(paired.claimed.has(addr))continue;
+    rows.push({row:Number(addr.match(/\d+$/)[0]),label:labelFromCell(sheet,addr),items:[[addr,sheet.cells[addr]]],axisLabels:false});
   }
-  return rows.join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
+  rows.sort((a,b)=>a.row-b.row);
+  return rows.map(row=>`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${row.axisLabels?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
 }
 function staticNotes(sheet){
   const items=[];
@@ -147,7 +183,7 @@ function referenceTable(sheet,book){
       if(!cell)continue;
       const v=cell.formula?book.value(sheet.name,addr):cell.value;
       if(v===null||v===undefined||v==="")continue;
-      cells.push(`<td><small>${esc(addr)}</small><div>${esc(display(v))}</div></td>`);
+      cells.push(`<td><div>${esc(display(v))}</div></td>`);
     }
     if(cells.length)rows.push(`<tr><th>${r}</th>${cells.join("")}</tr>`);
   }
