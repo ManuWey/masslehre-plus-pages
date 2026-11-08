@@ -31,6 +31,35 @@ const labelFromCell=(sheet,addr)=>{
   if(above&&!above.formula&&typeof above.value==="string"&&above.value.trim())return above.value.trim();
   return "Bezeichnung in Excel nicht hinterlegt";
 };
+function inputLabelInfo(sheet,addr){
+  const m=addr.match(/^([A-Z]+)(\d+)$/);if(!m)return null;
+  const row=Number(m[2]),col=colNum(m[1]),cells=sheet.cells;
+  const find=(r,startCol)=>{
+    for(let c=startCol;c>=1;c--){
+      const cell=cells[letter(c)+r];
+      if(!cell||cell.formula||typeof cell.value!=="string"||!cell.value.trim())continue;
+      const label=cell.value.trim();
+      if(label==="B"||label==="H")continue;
+      return {label:label.replace(/\s+/g," "),cell:letter(c)+r,distance:col-c};
+    }
+    return null;
+  };
+  const sameRow=find(row,col-1);
+  if(sameRow)return sameRow.distance<=2?sameRow:null;
+  const above=cells[m[1]+(row-1)];
+  if(above&&!above.formula&&typeof above.value==="string"&&above.value.trim())return {label:above.value.trim().replace(/\s+/g," "),cell:m[1]+(row-1),distance:0};
+  const previous=find(row-1,col-1);
+  return previous&&previous.distance<=2?previous:null;
+}
+function visibleInputs(sheet){
+  const anchors=new Set();
+  return (sheet.inputs||[]).flatMap(input=>{
+    const info=inputLabelInfo(sheet,input.cell);
+    if(!info||anchors.has(info.cell))return [];
+    anchors.add(info.cell);
+    return [{...input,label:info.label}];
+  });
+}
 function letter(n){let s="";while(n){let r=(n-1)%26;s=String.fromCharCode(65+r)+s;n=Math.floor((n-1)/26);}return s;}
 function parseOptions(validation,sheetName,addr){
   if(!validation||validation.type!=="list"||!validation.formula1)return null;
@@ -131,7 +160,8 @@ function pairedOutputGroups(sheet,formulas){
   return {groups,claimed};
 }
 function outputRows(sheet,book){
-  const formulas=Object.entries(sheet.cells).filter(([,cell])=>cell.formula).sort(([a],[b])=>{
+  const outputFills=new Set(["FFFBE1","FFF7C9","F5F5F5"]);
+  const formulas=Object.entries(sheet.cells).filter(([,cell])=>cell.formula&&outputFills.has(String(cell.meta?.fill?.fg||"").toUpperCase())).sort(([a],[b])=>{
     const ma=a.match(/^([A-Z]+)(\d+)$/),mb=b.match(/^([A-Z]+)(\d+)$/);
     return Number(ma?.[2]||0)-Number(mb?.[2]||0)||colNum(ma?.[1]||"A")-colNum(mb?.[1]||"A");
   });
@@ -195,7 +225,7 @@ function renderCurrent(){
   const book=makeBook();
   $("#page-title").textContent=sheet.name;
   $("#page-subtitle").textContent="Tür- und Zargensystem · Datenmodell "+state.config.fileVersion;
-  const fields=sheet.inputs||[];
+  const fields=visibleInputs(sheet);
   $("#inputs").innerHTML=fields.length?fields.map(x=>inputMarkup(sheet,x)).join(""):`<p class="muted">Dieses Tabellenblatt enthält keine erkannten Eingabefelder.</p>`;
   $("#results").innerHTML=(state.config.referenceSheets||[]).includes(sheet.name)?referenceTable(sheet,book):outputRows(sheet,book);
   $("#notes").innerHTML=staticNotes(sheet);
