@@ -224,6 +224,10 @@ function referenceTable(sheet,book){
   }
   return `<div class="table-wrap"><table class="reference-table"><tbody>${rows.join("")}</tbody></table></div>`;
 }
+function sheetImageGallery(sheet){
+  const images=state.config.sheetImages?.[sheet.name]||[];
+  return images.map(image=>`<figure class="sheet-image"><img src="${esc(image.src)}" alt="${esc(image.alt||("Abbildung zum Tabellenblatt "+sheet.name))}" loading="lazy" decoding="async"></figure>`).join("");
+}
 
 function renderCurrent(){
   const sheet=state.workbook[state.current];if(!sheet)return;
@@ -233,6 +237,9 @@ function renderCurrent(){
   const fields=visibleInputs(sheet);
   $("#inputs").innerHTML=fields.length?fields.map(x=>inputMarkup(sheet,x)).join(""):`<p class="muted">Dieses Tabellenblatt enthält keine erkannten Eingabefelder.</p>`;
   $("#results").innerHTML=(state.config.referenceSheets||[]).includes(sheet.name)?referenceTable(sheet,book):outputRows(sheet,book);
+  const images=sheetImageGallery(sheet);
+  $("#sheet-images").innerHTML=images;
+  $("#image-panel").hidden=!images;
   $("#notes").innerHTML=staticNotes(sheet);
   $("#input-count").textContent=fields.length+" Eingaben";
   $("#formula-count").textContent=sheet.formulaCount||Object.values(sheet.cells).filter(c=>c.formula).length+" Formeln";
@@ -271,6 +278,7 @@ function closeNav(){state.menuOpen=false;$("#sidebar").classList.remove("open");
 async function init(){
   try{
     const r=await fetch("data/app-config.json");state.config=await r.json();
+    const imageIndex=await fetch("data/sheet-images.json");state.config.sheetImages=imageIndex.ok?await imageIndex.json():{};
     const idx=await fetch("data/workbook-index.json");const index=await idx.json();state.config.sheets=index.sheets;
     $("#version").textContent="Excel-Datenstand "+state.config.fileVersion;
     // Load helper sheets as well as calculator sheets so cross-sheet Excel formulas can resolve.

@@ -1,0 +1,450 @@
+{
+  "Update Infos": [
+    {
+      "src": "assets/excel-images/image2.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Update Infos"
+    },
+    {
+      "src": "assets/excel-images/image1.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Update Infos"
+    }
+  ],
+  "Standard": [
+    {
+      "src": "assets/excel-images/image6.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Standard"
+    },
+    {
+      "src": "assets/excel-images/image7.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Standard"
+    }
+  ],
+  "Stahlzargen": [
+    {
+      "src": "assets/excel-images/image10.png",
+      "alt": "Abbildung zum Tabellenblatt Stahlzargen"
+    },
+    {
+      "src": "assets/excel-images/image9.png",
+      "alt": "Abbildung zum Tabellenblatt Stahlzargen"
+    },
+    {
+      "src": "assets/excel-images/image11.png",
+      "alt": "Abbildung zum Tabellenblatt Stahlzargen"
+    }
+  ],
+  "Blockrahmen": [
+    {
+      "src": "assets/excel-images/image12.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen"
+    }
+  ],
+  "Blockrahmen Furnier": [
+    {
+      "src": "assets/excel-images/image14.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen Furnier"
+    },
+    {
+      "src": "assets/excel-images/image15.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen Furnier"
+    }
+  ],
+  "Blockrahmen Blanche": [
+    {
+      "src": "assets/excel-images/image16.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen Blanche"
+    }
+  ],
+  "Blockrahmen LINEA": [
+    {
+      "src": "assets/excel-images/image18.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen LINEA"
+    },
+    {
+      "src": "assets/excel-images/image19.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen LINEA"
+    },
+    {
+      "src": "assets/excel-images/image17.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen LINEA"
+    },
+    {
+      "src": "assets/excel-images/image20.png",
+      "alt": "Abbildung zum Tabellenblatt Blockrahmen LINEA"
+    }
+  ],
+  "Blendrahmen": [
+    {
+      "src": "assets/excel-images/image21.png",
+      "alt": "Abbildung zum Tabellenblatt Blendrahmen"
+    }
+  ],
+  "Blendrahmen Blanche": [
+    {
+      "src": "assets/excel-images/image22.png",
+      "alt": "Abbildung zum Tabellenblatt Blendrahmen Blanche"
+    }
+  ],
+  "KLASSIK IL Holz": [
+    {
+      "src": "assets/excel-images/image23.png",
+      "alt": "Abbildung zum Tabellenblatt KLASSIK IL Holz"
+    }
+  ],
+  "KLASSIK IL Glas": [
+    {
+      "src": "assets/excel-images/image26.png",
+      "alt": "Abbildung zum Tabellenblatt KLASSIK IL Glas"
+    },
+    {
+      "src": "assets/excel-images/image24.jpeg",
+      "alt": "Abbildung zum Tabellenblatt KLASSIK IL Glas"
+    }
+  ],
+  "KLASSIK AL Holz": [
+    {
+      "src": "assets/excel-images/image29.png",
+      "alt": "Abbildung zum Tabellenblatt KLASSIK AL Holz"
+    }
+  ],
+  "KLASSIK AL Glas": [
+    {
+      "src": "assets/excel-images/image32.png",
+      "alt": "Abbildung zum Tabellenblatt KLASSIK AL Glas"
+    }
+  ],
+  "SIMPLE IL Holz": [
+    {
+      "src": "assets/excel-images/image34.png",
+      "alt": "Abbildung zum Tabellenblatt SIMPLE IL Holz"
+    }
+  ],
+  "SIMPLE IL Glas": [
+    {
+      "src": "assets/excel-images/image36.png",
+      "alt": "Abbildung zum Tabellenblatt SIMPLE IL Glas"
+    }
+  ],
+  "SLIM AL Holz": [
+    {
+      "src": "assets/excel-images/image39.png",
+      "alt": "Abbildung zum Tabellenblatt SLIM AL Holz"
+    },
+    {
+      "src": "assets/excel-images/image40.png",
+      "alt": "Abbildung zum Tabellenblatt SLIM AL Holz"
+    }
+  ],
+  "SLIM AL Glas": [
+    {
+      "src": "assets/excel-images/image41.png",
+      "alt": "Abbildung zum Tabellenblatt SLIM AL Glas"
+    },
+    {
+      "src": "assets/excel-images/image42.png",
+      "alt": "Abbildung zum Tabellenblatt SLIM AL Glas"
+    }
+  ],
+  "EASY Holz": [
+    {
+      "src": "assets/excel-images/image46.png",
+      "alt": "Abbildung zum Tabellenblatt EASY Holz"
+    },
+    {
+      "src": "assets/excel-images/image44.png",
+      "alt": "Abbildung zum Tabellenblatt EASY Holz"
+    }
+  ],
+  "EASY Glas": [
+    {
+      "src": "assets/excel-images/image48.png",
+      "alt": "Abbildung zum Tabellenblatt EASY Glas"
+    },
+    {
+      "src": "assets/excel-images/image49.png",
+      "alt": "Abbildung zum Tabellenblatt EASY Glas"
+    }
+  ],
+  "BARN Holz": [
+    {
+      "src": "assets/excel-images/image51.png",
+      "alt": "Abbildung zum Tabellenblatt BARN Holz"
+    }
+  ],
+  "BARN Glas": [
+    {
+      "src": "assets/excel-images/image53.png",
+      "alt": "Abbildung zum Tabellenblatt BARN Glas"
+    },
+    {
+      "src": "assets/excel-images/image52.png",
+      "alt": "Abbildung zum Tabellenblatt BARN Glas"
+    }
+  ],
+  "LODGE Holz": [
+    {
+      "src": "assets/excel-images/image54.png",
+      "alt": "Abbildung zum Tabellenblatt LODGE Holz"
+    }
+  ],
+  "LODGE Glas": [
+    {
+      "src": "assets/excel-images/image57.png",
+      "alt": "Abbildung zum Tabellenblatt LODGE Glas"
+    },
+    {
+      "src": "assets/excel-images/image56.png",
+      "alt": "Abbildung zum Tabellenblatt LODGE Glas"
+    }
+  ],
+  "WF1 FU": [
+    {
+      "src": "assets/excel-images/image58.png",
+      "alt": "Abbildung zum Tabellenblatt WF1 FU"
+    }
+  ],
+  "WF2 FU": [
+    {
+      "src": "assets/excel-images/image61.png",
+      "alt": "Abbildung zum Tabellenblatt WF2 FU"
+    }
+  ],
+  "WF3 FU": [
+    {
+      "src": "assets/excel-images/image65.png",
+      "alt": "Abbildung zum Tabellenblatt WF3 FU"
+    }
+  ],
+  "WF4 FU": [
+    {
+      "src": "assets/excel-images/image68.png",
+      "alt": "Abbildung zum Tabellenblatt WF4 FU"
+    }
+  ],
+  "WF1 BLO": [
+    {
+      "src": "assets/excel-images/image71.png",
+      "alt": "Abbildung zum Tabellenblatt WF1 BLO"
+    }
+  ],
+  "WF2 BLO": [
+    {
+      "src": "assets/excel-images/image75.png",
+      "alt": "Abbildung zum Tabellenblatt WF2 BLO"
+    }
+  ],
+  "WF3 BLO": [
+    {
+      "src": "assets/excel-images/image78.png",
+      "alt": "Abbildung zum Tabellenblatt WF3 BLO"
+    }
+  ],
+  "WF4 BLO": [
+    {
+      "src": "assets/excel-images/image81.png",
+      "alt": "Abbildung zum Tabellenblatt WF4 BLO"
+    }
+  ],
+  "GH FU Oberblende MKOQ": [
+    {
+      "src": "assets/excel-images/image85.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU Oberblende MKOQ"
+    },
+    {
+      "src": "assets/excel-images/image86.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU Oberblende MKOQ"
+    },
+    {
+      "src": "assets/excel-images/image88.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU Oberblende MKOQ"
+    },
+    {
+      "src": "assets/excel-images/image87.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU Oberblende MKOQ"
+    }
+  ],
+  "GH FU MKMQ": [
+    {
+      "src": "assets/excel-images/image90.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU MKMQ"
+    },
+    {
+      "src": "assets/excel-images/image89.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU MKMQ"
+    },
+    {
+      "src": "assets/excel-images/image91.png",
+      "alt": "Abbildung zum Tabellenblatt GH FU MKMQ"
+    }
+  ],
+  "GH BLO MKMQ": [
+    {
+      "src": "assets/excel-images/image93.png",
+      "alt": "Abbildung zum Tabellenblatt GH BLO MKMQ"
+    }
+  ],
+  "GG-Pendeltüre": [
+    {
+      "src": "assets/excel-images/image95.png",
+      "alt": "Abbildung zum Tabellenblatt GG-Pendeltüre"
+    },
+    {
+      "src": "assets/excel-images/image96.png",
+      "alt": "Abbildung zum Tabellenblatt GG-Pendeltüre"
+    }
+  ],
+  "Holz-Pendeltüre": [
+    {
+      "src": "assets/excel-images/image98.png",
+      "alt": "Abbildung zum Tabellenblatt Holz-Pendeltüre"
+    },
+    {
+      "src": "assets/excel-images/image99.png",
+      "alt": "Abbildung zum Tabellenblatt Holz-Pendeltüre"
+    }
+  ],
+  "2-flg Standard": [
+    {
+      "src": "assets/excel-images/image101.png",
+      "alt": "Abbildung zum Tabellenblatt 2-flg Standard"
+    }
+  ],
+  "Zylinder Rechner": [
+    {
+      "src": "assets/excel-images/image107.png",
+      "alt": "Abbildung zum Tabellenblatt Zylinder Rechner"
+    }
+  ],
+  "Lichtausschnitte": [
+    {
+      "src": "assets/excel-images/image108.png",
+      "alt": "Abbildung zum Tabellenblatt Lichtausschnitte"
+    },
+    {
+      "src": "assets/excel-images/image110.png",
+      "alt": "Abbildung zum Tabellenblatt Lichtausschnitte"
+    },
+    {
+      "src": "assets/excel-images/image109.png",
+      "alt": "Abbildung zum Tabellenblatt Lichtausschnitte"
+    },
+    {
+      "src": "assets/excel-images/image111.png",
+      "alt": "Abbildung zum Tabellenblatt Lichtausschnitte"
+    }
+  ],
+  "PRÜM-LA": [
+    {
+      "src": "assets/excel-images/image112.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image113.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image116.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image117.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image114.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image115.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image118.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image119.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image120.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image124.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image121.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image122.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image123.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image125.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image126.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image127.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image128.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    },
+    {
+      "src": "assets/excel-images/image129.png",
+      "alt": "Abbildung zum Tabellenblatt PRÜM-LA"
+    }
+  ],
+  "Blanche-LA": [
+    {
+      "src": "assets/excel-images/image130.png",
+      "alt": "Abbildung zum Tabellenblatt Blanche-LA"
+    },
+    {
+      "src": "assets/excel-images/image131.png",
+      "alt": "Abbildung zum Tabellenblatt Blanche-LA"
+    }
+  ],
+  "LINEA-LA": [
+    {
+      "src": "assets/excel-images/image133.png",
+      "alt": "Abbildung zum Tabellenblatt LINEA-LA"
+    },
+    {
+      "src": "assets/excel-images/image132.png",
+      "alt": "Abbildung zum Tabellenblatt LINEA-LA"
+    }
+  ],
+  "Furnier-LA": [
+    {
+      "src": "assets/excel-images/image134.png",
+      "alt": "Abbildung zum Tabellenblatt Furnier-LA"
+    },
+    {
+      "src": "assets/excel-images/image135.png",
+      "alt": "Abbildung zum Tabellenblatt Furnier-LA"
+    }
+  ],
+  "Umrechnungen": [
+    {
+      "src": "assets/excel-images/image7.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Umrechnungen"
+    },
+    {
+      "src": "assets/excel-images/image6.jpeg",
+      "alt": "Abbildung zum Tabellenblatt Umrechnungen"
+    }
+  ]
+}

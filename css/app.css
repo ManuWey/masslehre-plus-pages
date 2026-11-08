@@ -66,3 +66,6 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .reference-table td{padding:8px 10px;border-bottom:1px solid #edf0f3;border-right:1px solid #f0f2f4;white-space:nowrap}
 .reference-table td small{display:block;color:#99a3ad;font-size:9px;margin-bottom:3px}
 .reference-table td div{font-weight:600;color:#293744}
+.sheet-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;align-items:start}
+.sheet-image{margin:0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.sheet-image img{display:block;width:100%;height:auto;max-height:560px;object-fit:contain}
