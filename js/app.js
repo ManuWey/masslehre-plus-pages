@@ -180,7 +180,8 @@ function outputRows(sheet,book){
   for(const range of sheet.mergedRanges||[]){
     const match=range.match(/^([A-Z]+)(\d+):([A-Z]+)\2$/);if(!match)continue;
     const [,startCol,rowText,endCol]=match,row=Number(rowText),labelCell=sheet.cells[startCol+rowText];
-    if(row<firstOutputRow||!labelCell||typeof labelCell.value!=="string"||!labelCell.value.trim())continue;
+    // Excel section bars are often placed one row before their first result formula.
+    if(row<firstOutputRow-1||!labelCell||typeof labelCell.value!=="string"||!labelCell.value.trim())continue;
     if(String(labelCell.meta?.fill?.fg||"").toUpperCase()!=="F5D200"||colNum(endCol)-colNum(startCol)<3)continue;
     rows.push({type:"heading",row,label:labelCell.value.trim()});
   }
