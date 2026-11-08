@@ -6,7 +6,7 @@ const state={config:null,workbook:{},current:null,values:{},menuOpen:false};
 const colNum=s=>{let n=0;for(const c of s.match(/[A-Z]+/)[0])n=n*26+c.charCodeAt(0)-64;return n;};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const labelFromCell=(sheet,addr)=>{
-  const m=addr.match(/^([A-Z]+)(\\d+)$/);if(!m)return "";
+  const m=addr.match(/^([A-Z]+)(\d+)$/);if(!m)return "Bezeichnung in Excel nicht hinterlegt";
   const row=Number(m[2]),col=colNum(m[1]),cells=sheet.cells;
   const find=(r,startCol)=>{
     for(let c=startCol;c>=1;c--){
@@ -14,7 +14,7 @@ const labelFromCell=(sheet,addr)=>{
       if(!v||v.formula||typeof v.value!=="string"||!v.value.trim())continue;
       const txt=v.value.trim();
       if(txt==="B"||txt==="H")continue;
-      return txt.replace(/\\s+/g," ");
+      return txt.replace(/\s+/g," ");
     }
     return "";
   };
@@ -27,9 +27,9 @@ const labelFromCell=(sheet,addr)=>{
   }
   const previous=find(row-1,col-1);
   if(previous)return previous;
-  const above=cells[addr.replace(/\\d+$/,String(row-1))];
+  const above=cells[addr.replace(/\d+$/,String(row-1))];
   if(above&&!above.formula&&typeof above.value==="string"&&above.value.trim())return above.value.trim();
-  return "Eingabe "+addr;
+  return "Bezeichnung in Excel nicht hinterlegt";
 };
 function letter(n){let s="";while(n){let r=(n-1)%26;s=String.fromCharCode(65+r)+s;n=Math.floor((n-1)/26);}return s;}
 function parseOptions(validation,sheetName,addr){
@@ -87,14 +87,15 @@ function display(v){
   return String(v);
 }
 function inputMarkup(sheet,input){
-  const addr=input.cell, val=getValue(sheet.name,addr), typ=inputType(input), opts=parseOptions(input.validation,sheet.name,addr);
+  const addr=input.cell, fieldName=input.name||addr, label=input.label||input.name||labelFromCell(sheet,addr), val=getValue(sheet.name,addr), typ=inputType(input), opts=parseOptions(input.validation,sheet.name,addr);
+  const ariaLabel=`${label}, Feldname ${fieldName}`;
   let control="";
   if(typ==="select"&&opts){
-    control=`<select data-cell="${esc(addr)}">${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
+    control=`<select name="${esc(fieldName)}" aria-label="${esc(ariaLabel)}" data-cell="${esc(addr)}">${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
   }else{
-    control=`<input data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="any" value="${esc(val??"")}" placeholder="Wert eingeben">`;
+    control=`<input name="${esc(fieldName)}" aria-label="${esc(ariaLabel)}" data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="any" value="${esc(val??"")}" placeholder="Wert eingeben">`;
   }
-  return `<label class="field"><span>${esc(labelFromCell(sheet,addr))} <small>${esc(addr)}</small></span>${control}</label>`;
+  return `<label class="field"><span class="field-caption"><span class="field-label">${esc(label)}</span><small class="field-name">Feldname: ${esc(fieldName)}</small></span>${control}</label>`;
 }
 function outputRows(sheet,book){
   const rows=[];
@@ -103,7 +104,7 @@ function outputRows(sheet,book){
     if(!formulas.length)continue;
     const vals=formulas.map(([a,c])=>({addr:a,value:book.value(sheet.name,a)}));
     const label=labelFromCell(sheet,vals[0].addr);
-    rows.push(`<div class="result-row"><div class="result-label">${esc(label)}</div><div class="result-values">${vals.map(v=>`<div class="result-value"><span>${esc(v.addr)}</span><strong>${esc(display(v.value))}</strong></div>`).join("")}</div></div>`);
+    rows.push(`<div class="result-row"><div class="result-label">${esc(label||"Ergebnis")}</div><div class="result-values">${vals.map(v=>`<div class="result-value"><span class="result-name">Feldname: ${esc(v.addr)}</span><strong>${esc(display(v.value))}</strong></div>`).join("")}</div></div>`);
   }
   return rows.join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
 }
