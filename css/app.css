@@ -40,7 +40,6 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:650;color:#394653}
 .field-caption{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
 .field-label{min-width:0}
-.field-name,.result-name{font-size:11px;color:#74818c;font-weight:500;white-space:nowrap}
 .field input,.field select{width:100%;border:1px solid #cfd7df;background:#fbfcfd;border-radius:9px;padding:11px 12px;color:var(--ink);min-height:43px}
 .field input:focus,.field select:focus,#search:focus{outline:2px solid #f2c40080;border-color:#d7ad00}
 .result-row{display:grid;grid-template-columns:minmax(160px,1fr) minmax(180px,1.4fr);gap:14px;padding:12px 0;border-bottom:1px solid #edf0f3;align-items:center}
@@ -49,7 +48,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .result-values{display:flex;gap:8px;flex-wrap:wrap}
 .result-value{display:flex;flex-direction:column;gap:3px;min-width:94px;padding:8px 10px;background:#f2f5f7;border-radius:8px}
 .result-value span{font-size:10px;color:#84909b}
-.result-value .result-name{font-size:11px;color:#74818c}
+.result-value .result-axis{font-size:11px;color:#74818c;font-weight:600}
 .result-value strong{font-size:14px;color:#18232d;overflow-wrap:anywhere}
 .notes{margin-top:14px;color:#5e6974;font-size:12px}
 .notes summary{cursor:pointer;font-weight:700}
