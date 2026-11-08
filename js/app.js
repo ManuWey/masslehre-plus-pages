@@ -171,13 +171,21 @@ function outputRows(sheet,book){
     return Number(ma?.[2]||0)-Number(mb?.[2]||0)||colNum(ma?.[1]||"A")-colNum(mb?.[1]||"A");
   });
   const paired=pairedOutputGroups(sheet,formulas);
-  const rows=[...paired.groups.map(group=>({row:Number(group.items[0][0].match(/\d+$/)[0]),label:group.label,items:group.items,axisLabels:true}))];
+  const rows=[...paired.groups.map(group=>({type:"result",row:Number(group.items[0][0].match(/\d+$/)[0]),label:group.label,items:group.items,axisLabels:true}))];
   for(const [addr] of formulas){
     if(paired.claimed.has(addr))continue;
-    rows.push({row:Number(addr.match(/\d+$/)[0]),label:labelFromCell(sheet,addr),items:[[addr,sheet.cells[addr]]],axisLabels:false});
+    rows.push({type:"result",row:Number(addr.match(/\d+$/)[0]),label:labelFromCell(sheet,addr),items:[[addr,sheet.cells[addr]]],axisLabels:false});
   }
-  rows.sort((a,b)=>a.row-b.row||colNum(a.items[0][0].match(/^([A-Z]+)/)?.[1]||"A")-colNum(b.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"));
-  return rows.map(row=>`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${row.axisLabels?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
+  const firstOutputRow=rows.length?Math.min(...rows.map(row=>row.row)):Infinity;
+  for(const range of sheet.mergedRanges||[]){
+    const match=range.match(/^([A-Z]+)(\d+):([A-Z]+)\2$/);if(!match)continue;
+    const [,startCol,rowText,endCol]=match,row=Number(rowText),labelCell=sheet.cells[startCol+rowText];
+    if(row<firstOutputRow||!labelCell||typeof labelCell.value!=="string"||!labelCell.value.trim())continue;
+    if(String(labelCell.meta?.fill?.fg||"").toUpperCase()!=="F5D200"||colNum(endCol)-colNum(startCol)<3)continue;
+    rows.push({type:"heading",row,label:labelCell.value.trim()});
+  }
+  rows.sort((a,b)=>a.row-b.row||(a.type==="heading"?-1:1)||(a.items?colNum(a.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0)-(b.items?colNum(b.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0));
+  return rows.map(row=>row.type==="heading"?`<div class="result-section-heading">${esc(row.label)}</div>`:`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${row.axisLabels?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
 }
 function staticNotes(sheet){
   const items=[];
@@ -301,3 +309,4 @@ async function init(){
 }
 document.addEventListener("DOMContentLoaded",init);
 })();
+
