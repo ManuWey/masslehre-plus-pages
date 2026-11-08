@@ -8,6 +8,15 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const labelFromCell=(sheet,addr)=>{
   const m=addr.match(/^([A-Z]+)(\d+)$/);if(!m)return "Bezeichnung in Excel nicht hinterlegt";
   const row=Number(m[2]),col=colNum(m[1]),cells=sheet.cells;
+  // Prefer a merged label directly to the left; many LA names span two rows.
+  const mergedLabels=(sheet.mergedRanges||[]).flatMap(range=>{
+    const match=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!match)return [];
+    const startRow=Number(match[2]),endRow=Number(match[4]),endCol=colNum(match[3]);
+    if(row<startRow||row>endRow||endCol>=col)return [];
+    const cell=cells[match[1]+match[2]];
+    return cell&&!cell.formula&&typeof cell.value==="string"&&cell.value.trim()? [{endCol,label:cell.value.trim().replace(/\s+/g," ")}]:[];
+  }).sort((a,b)=>b.endCol-a.endCol);
+  if(mergedLabels.length)return mergedLabels[0].label;
   const find=(r,startCol)=>{
     for(let c=startCol;c>=1;c--){
       const v=cells[letter(c)+r];
@@ -182,7 +191,7 @@ function outputRows(sheet,book){
     const [,startCol,rowText,endCol]=match,row=Number(rowText),labelCell=sheet.cells[startCol+rowText];
     // Excel section bars are often placed one row before their first result formula.
     if(row<firstOutputRow-1||!labelCell||typeof labelCell.value!=="string"||!labelCell.value.trim())continue;
-    if(String(labelCell.meta?.fill?.fg||"").toUpperCase()!=="F5D200"||colNum(endCol)-colNum(startCol)<3)continue;
+    if(!new Set(["F5D200","FACA00"]).has(String(labelCell.meta?.fill?.fg||"").toUpperCase())||colNum(endCol)-colNum(startCol)<3)continue;
     rows.push({type:"heading",row,label:labelCell.value.trim()});
   }
   rows.sort((a,b)=>a.row-b.row||(a.type==="heading"?-1:1)||(a.items?colNum(a.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0)-(b.items?colNum(b.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0));
