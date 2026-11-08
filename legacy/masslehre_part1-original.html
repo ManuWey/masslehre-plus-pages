@@ -1,0 +1,711 @@
+<!doctype html><html lang='de'>
+<head><meta charset='utf-8'>
+<title>Maßlehre</title>
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff}
+header{position:fixed;top:0;left:0;right:0;height:3rem;background:#F5D200;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;z-index:100}
+#menu-toggle{position:fixed;top:0.4rem;left:0.6rem;z-index:101;background:#fff;border:none;padding:6px;border-radius:4px;cursor:pointer}
+.sidebar{position:fixed;left:-22rem;top:3rem;bottom:0;width:20rem;background:#fff;padding:1rem;overflow:auto;transition:left .25s;box-shadow:2px 0 6px rgba(0,0,0,0.08);z-index:100}
+.sidebar.open{left:0}
+.content{margin-left:0;padding-top:3rem;text-align:center}
+.menu-button{display:block;width:100%;padding:0.5rem;text-align:left;border:none;background:none;cursor:pointer}
+.page{padding:1rem}
+.table-wrap{display:block;text-align:center;overflow:auto}
+.sheet-table{border-collapse:collapse;background:#fff;display:inline-table;margin:auto}
+.sheet-table td{padding:4px;min-width:60px;border:0}
+</style>
+</head>
+<body>
+<header>Maßlehre</header>
+<button id='menu-toggle'>☰</button>
+<div class='sidebar' id='sidebar'>
+<button class='menu-button' id='menu-standard' onclick="navigateTo('standard')">Standard</button>
+<button class='menu-button' id='menu-blockrahmen' onclick="navigateTo('blockrahmen')">Blockrahmen</button>
+<button class='menu-button' id='menu-blockrahmen-furnier' onclick="navigateTo('blockrahmen-furnier')">Blockrahmen Furnier</button>
+<button class='menu-button' id='menu-blockrahmen-blanche' onclick="navigateTo('blockrahmen-blanche')">Blockrahmen Blanche</button>
+<button class='menu-button' id='menu-blockrahmen-linea' onclick="navigateTo('blockrahmen-linea')">Blockrahmen LINEA</button>
+<button class='menu-button' id='menu-blendrahmen' onclick="navigateTo('blendrahmen')">Blendrahmen</button>
+<button class='menu-button' id='menu-blendrahmen-blanche' onclick="navigateTo('blendrahmen-blanche')">Blendrahmen Blanche</button>
+<button class='menu-button' id='menu-lichtausschnitte' onclick="navigateTo('lichtausschnitte')">Lichtausschnitte</button>
+
+</div>
+<div class='content' id='content'>
+<div class='page' id='page-standard' style='display:none'>
+	<h3>Standard</h3><div class='table-wrap'>
+		<div class='main-container'>
+			<table class='sheet-table'>
+				<tr>
+				<td id='cell-A1'style='sheet-table;text-align:center;vertical-align:center;'></td><td id='cell-B1'style='sheet-table;text-align:center;vertical-align:center;'></td><td id='cell-C1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I1' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+					<tr>
+					<td id='cell-A2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I2' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A3' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'>Standard-Drehtüren:</td>
+					<td id='cell-I3' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A4' style='background:#FACA00;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'></td><td id='cell-I4' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H5' style='background:#ffffff;'></td><td id='cell-I5' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B6' style='background:#ffffff;text-align:left;vertical-align:center;' colspan='6'>vorhandenes Maß auswählen:</td>
+					<td id='cell-H6' style='background:#ffffff;'></td><td id='cell-I6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A7' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B7' style='background:#F2F2F2;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' colspan='6'><select id='input-select'><option>Wandöffnungsmaß</option><option>Futteraußenmaß</option><option>Lichtes Zargendurchangsmaß</option><option>Zargenfalzmaß</option><option>Türblattaußenmaß (gefälzt)</option><option>Türblattaußenmaß Stumpf (GG-Türe)</option><option>Bekleidungsaußenmaß (60mm Bekl.)</option></select>
+					</td><td id='cell-H7' style='background:#ffffff;'></td><td id='cell-I7' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H8' style='background:#ffffff;'></td><td id='cell-I8' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-D9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-H9' style='background:#ffffff;'></td><td id='cell-I9' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A10' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;'>Breite:</td>
+					<td id='cell-C10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-breite' style='width:80px'></td><td id='cell-D10' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-E10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;' colspan='2'>Höhe:</td>
+					<td id='cell-G10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-hoehe' style='width:80px'> <button onclick='berechnen()'>Berechnen</button></td>
+					<td id='cell-H10' style='background:#ffffff;'></td><td id='cell-I10' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C11' style='background:#ffffff;text-align:center;'></td><td id='cell-D11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G11' style='background:#ffffff;text-align:center;'></td><td id='cell-H11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I11' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C12' style='background:#ffffff;text-align:center;'></td><td id='cell-D12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G12' style='background:#ffffff;text-align:center;'></td><td id='cell-H12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I12' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C13' style='background:#ffffff;text-align:center;'></td><td id='cell-D13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G13' style='background:#ffffff;text-align:center;'></td><td id='cell-H13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I13' style='background:#ffffff;text-align:center;vertical-align:center;'></td
+				</tr>
+				<tr>
+					<td id='cell-A14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C14' style='background:#ffffff;'></td><td id='cell-D14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G14' style='background:#ffffff;'></td><td id='cell-H14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I14' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I16' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>1</td><td id='cell-C17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Wandöffnungsmaß </td>
+					<td id='cell-F17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G17' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I17' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-F18' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td>
+					<td id='cell-G18' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H18' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I19' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>2</td><td id='cell-C20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Futteraußenmaß</td><td id='cell-F20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G20' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I20' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F21' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G21' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I21' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I22' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>3</td><td id='cell-C23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>lichtes Zargendurchgangsmaß</td><td id='cell-F23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G23' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I23' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F24' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G24' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I24' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I25' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>4</td><td id='cell-C26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Zargenfalzmaß</td><td id='cell-F26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G26' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I26' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F27' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G27' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I27' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I28' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A29' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß gefälzt</td><td id='cell-F29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G29' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H29' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I29' style='background:#ffffff;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A30' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F30' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G30' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H30' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I30' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H31' style='background:#ffffff;'></td><td id='cell-I31' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A32' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß stumpf =Türblattaußenmaß GGT</td><td id='cell-F32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G32' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H32' style='background:#ffffff;'></td><td id='cell-I32' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F33' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G33' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I33' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I34' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>6</td><td id='cell-C35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Bekleidungsaußenmaß =60mm_Bekleidungsbreite</td><td id='cell-F35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G35' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I35' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F36' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G36' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I36' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I37' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A38' style='background:#ffffff;'></td><td id='cell-B38' style='background:#ffffff;text-align:center;vertical-align:center;' colspan='6'></td><td id='cell-H38' style='background:#ffffff;'></td><td id='cell-I38' style='background:#ffffff;'></td><td id='cell-J38' style='background:#ffffff;'></td><td id='cell-K38' style='background:#ffffff;'></td><td id='cell-L38' style='background:#ffffff;'></td><td id='cell-M38' style='background:#ffffff;'></td><td id='cell-N38' style='background:#ffffff;'></td><td id='cell-O38' style='background:#ffffff;'></td><td id='cell-P38' style='background:#ffffff;'></td><td id='cell-Q38' style='background:#ffffff;'></td><td id='cell-R38' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A39' style='background:#ffffff;'></td><td id='cell-B39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H39' style='background:#ffffff;'></td><td id='cell-I39' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-B40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-C40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-D40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-E40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-F40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-G40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-H40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A41' style='background:#ffffff;'></td><td id='cell-B41' style='background:#ffffff;'></td><td id='cell-C41' style='background:#ffffff;'></td><td id='cell-D41' style='background:#ffffff;'></td><td id='cell-E41' style='background:#ffffff;'></td><td id='cell-F41' style='background:#ffffff;'></td><td id='cell-G41' style='background:#ffffff;'></td><td id='cell-H41' style='background:#ffffff;'></td><td id='cell-I41' style='background:#ffffff;'></td>
+			</tr>
+			</table>
+</div>
+</div>
+</div>
+</div>
+<div class='content' id='content'>
+<div class='page' id='page-blockrahmen' style='display:none'>
+	<h3>Blockrahmen</h3><div class='table-wrap'>
+		<div class='main-container'>
+			<table class='sheet-table'>
+				<tr>
+				<td id='cell-A1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I1' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+					<tr>
+					<td id='cell-A2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I2' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A3' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'>Blockrahmen:</td>
+					<td id='cell-I3' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A4' style='background:#FACA00;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'></td><td id='cell-I4' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H5' style='background:#ffffff;'></td><td id='cell-I5' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B6' style='background:#ffffff;text-align:left;vertical-align:center;' colspan='6'>vorhandenes Maß auswählen:</td>
+					<td id='cell-H6' style='background:#ffffff;'></td><td id='cell-I6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A7' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B7' style='background:#F2F2F2;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' colspan='6'><select id='input-select'><option>Wandöffnungsmaß</option><option>Futteraußenmaß</option><option>Lichtes Zargendurchangsmaß</option><option>Zargenfalzmaß</option><option>Türblattaußenmaß (gefälzt)</option><option>Türblattaußenmaß Stumpf (GG-Türe)</option><option>Bekleidungsaußenmaß (60mm Bekl.)</option></select>
+					</td><td id='cell-H7' style='background:#ffffff;'></td><td id='cell-I7' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H8' style='background:#ffffff;'></td><td id='cell-I8' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-D9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-H9' style='background:#ffffff;'></td><td id='cell-I9' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A10' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;'>Breite:</td>
+					<td id='cell-C10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-breite' style='width:80px'></td><td id='cell-D10' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-E10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;' colspan='2'>Höhe:</td>
+					<td id='cell-G10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-hoehe' style='width:80px'> <button onclick='berechnen()'>Berechnen</button></td>
+					<td id='cell-H10' style='background:#ffffff;'></td><td id='cell-I10' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C11' style='background:#ffffff;text-align:center;'></td><td id='cell-D11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G11' style='background:#ffffff;text-align:center;'></td><td id='cell-H11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I11' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C12' style='background:#ffffff;text-align:center;'></td><td id='cell-D12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G12' style='background:#ffffff;text-align:center;'></td><td id='cell-H12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I12' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C13' style='background:#ffffff;text-align:center;'></td><td id='cell-D13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G13' style='background:#ffffff;text-align:center;'></td><td id='cell-H13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I13' style='background:#ffffff;text-align:center;vertical-align:center;'></td
+				</tr>
+				<tr>
+					<td id='cell-A14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C14' style='background:#ffffff;'></td><td id='cell-D14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G14' style='background:#ffffff;'></td><td id='cell-H14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I14' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I16' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>1</td><td id='cell-C17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Wandöffnungsmaß </td>
+					<td id='cell-F17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G17' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I17' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-F18' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td>
+					<td id='cell-G18' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H18' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I19' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>2</td><td id='cell-C20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Futteraußenmaß</td><td id='cell-F20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G20' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I20' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F21' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G21' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I21' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I22' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>3</td><td id='cell-C23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>lichtes Zargendurchgangsmaß</td><td id='cell-F23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G23' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I23' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F24' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G24' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I24' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I25' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>4</td><td id='cell-C26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Zargenfalzmaß</td><td id='cell-F26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G26' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I26' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F27' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G27' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I27' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I28' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A29' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß gefälzt</td><td id='cell-F29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G29' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H29' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I29' style='background:#ffffff;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A30' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F30' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G30' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H30' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I30' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H31' style='background:#ffffff;'></td><td id='cell-I31' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A32' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß stumpf =Türblattaußenmaß GGT</td><td id='cell-F32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G32' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H32' style='background:#ffffff;'></td><td id='cell-I32' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F33' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G33' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I33' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I34' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>6</td><td id='cell-C35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Bekleidungsaußenmaß =60mm_Bekleidungsbreite</td><td id='cell-F35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G35' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I35' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F36' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G36' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I36' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I37' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A38' style='background:#ffffff;'></td><td id='cell-B38' style='background:#ffffff;text-align:center;vertical-align:center;' colspan='6'></td><td id='cell-H38' style='background:#ffffff;'></td><td id='cell-I38' style='background:#ffffff;'></td><td id='cell-J38' style='background:#ffffff;'></td><td id='cell-K38' style='background:#ffffff;'></td><td id='cell-L38' style='background:#ffffff;'></td><td id='cell-M38' style='background:#ffffff;'></td><td id='cell-N38' style='background:#ffffff;'></td><td id='cell-O38' style='background:#ffffff;'></td><td id='cell-P38' style='background:#ffffff;'></td><td id='cell-Q38' style='background:#ffffff;'></td><td id='cell-R38' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A39' style='background:#ffffff;'></td><td id='cell-B39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H39' style='background:#ffffff;'></td><td id='cell-I39' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-B40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-C40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-D40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-E40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-F40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-G40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-H40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A41' style='background:#ffffff;'></td><td id='cell-B41' style='background:#ffffff;'></td><td id='cell-C41' style='background:#ffffff;'></td><td id='cell-D41' style='background:#ffffff;'></td><td id='cell-E41' style='background:#ffffff;'></td><td id='cell-F41' style='background:#ffffff;'></td><td id='cell-G41' style='background:#ffffff;'></td><td id='cell-H41' style='background:#ffffff;'></td><td id='cell-I41' style='background:#ffffff;'></td>
+			</tr>
+			</table>
+</div>
+</div>
+</div>
+</div>
+<div class='content' id='content'>
+<div class='page' id='page-blendrahmen' style='display:none'>
+	<h3>Blendrahmen</h3><div class='table-wrap'>
+		<div class='main-container'>
+			<table class='sheet-table'>
+				<tr>
+				<td id='cell-A1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H1' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I1' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+					<tr>
+					<td id='cell-A2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H2' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I2' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A3' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'>Blendrahmen:</td>
+					<td id='cell-I3' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A4' style='background:#FACA00;text-align:center;vertical-align:center;font-weight:bold;' colspan='8'></td><td id='cell-I4' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G5' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H5' style='background:#ffffff;'></td><td id='cell-I5' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B6' style='background:#ffffff;text-align:left;vertical-align:center;' colspan='6'>vorhandenes Maß auswählen:</td>
+					<td id='cell-H6' style='background:#ffffff;'></td><td id='cell-I6' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A7' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-B7' style='background:#F2F2F2;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' colspan='6'><select id='input-select'><option>Wandöffnungsmaß</option><option>Futteraußenmaß</option><option>Lichtes Zargendurchangsmaß</option><option>Zargenfalzmaß</option><option>Türblattaußenmaß (gefälzt)</option><option>Türblattaußenmaß Stumpf (GG-Türe)</option><option>Bekleidungsaußenmaß (60mm Bekl.)</option></select>
+					</td><td id='cell-H7' style='background:#ffffff;'></td><td id='cell-I7' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G8' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H8' style='background:#ffffff;'></td><td id='cell-I8' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-D9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F9' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G9' style='background:#ffffff;text-align:left;vertical-align:center;'></td><td id='cell-H9' style='background:#ffffff;'></td><td id='cell-I9' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A10' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;'>Breite:</td>
+					<td id='cell-C10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-breite' style='width:80px'></td><td id='cell-D10' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-E10' style='background:#F5D200;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;' colspan='2'>Höhe:</td>
+					<td id='cell-G10' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'><input type='number' id='input-hoehe' style='width:80px'> <button onclick='berechnen()'>Berechnen</button></td>
+					<td id='cell-H10' style='background:#ffffff;'></td><td id='cell-I10' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C11' style='background:#ffffff;text-align:center;'></td><td id='cell-D11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G11' style='background:#ffffff;text-align:center;'></td><td id='cell-H11' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I11' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C12' style='background:#ffffff;text-align:center;'></td><td id='cell-D12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G12' style='background:#ffffff;text-align:center;'></td><td id='cell-H12' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I12' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C13' style='background:#ffffff;text-align:center;'></td><td id='cell-D13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G13' style='background:#ffffff;text-align:center;'></td><td id='cell-H13' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I13' style='background:#ffffff;text-align:center;vertical-align:center;'></td
+				</tr>
+				<tr>
+					<td id='cell-A14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C14' style='background:#ffffff;'></td><td id='cell-D14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G14' style='background:#ffffff;'></td><td id='cell-H14' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I14' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H16' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I16' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>1</td><td id='cell-C17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Wandöffnungsmaß </td>
+					<td id='cell-F17' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G17' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H17' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I17' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+					<td id='cell-F18' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td>
+					<td id='cell-G18' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td>
+					<td id='cell-H18' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I18' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H19' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I19' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>2</td><td id='cell-C20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Futteraußenmaß</td><td id='cell-F20' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G20' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H20' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I20' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F21' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G21' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H21' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I21' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H22' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I22' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>3</td><td id='cell-C23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>lichtes Zargendurchgangsmaß</td><td id='cell-F23' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G23' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H23' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I23' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F24' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G24' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H24' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I24' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H25' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I25' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>4</td><td id='cell-C26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Zargenfalzmaß</td><td id='cell-F26' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G26' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H26' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I26' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F27' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G27' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H27' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I27' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H28' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I28' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A29' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß gefälzt</td><td id='cell-F29' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G29' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H29' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I29' style='background:#ffffff;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A30' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F30' style='background:#F5F5F5;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G30' style='background:#FFFBE1;text-align:center;vertical-align:center;font-weight:bold;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H30' style='background:#ffffff;vertical-align:center;border-left:1px solid #333;'></td><td id='cell-I30' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G31' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H31' style='background:#ffffff;'></td><td id='cell-I31' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A32' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>5</td><td id='cell-C32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Türblattaußenmaß stumpf =Türblattaußenmaß GGT</td><td id='cell-F32' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G32' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H32' style='background:#ffffff;'></td><td id='cell-I32' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F33' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G33' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H33' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I33' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H34' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I34' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2'>6</td><td id='cell-C35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;' rowspan='2' colspan='3'>Bekleidungsaußenmaß =60mm_Bekleidungsbreite</td><td id='cell-F35' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>B</td><td id='cell-G35' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H35' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I35' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F36' style='background:#F5F5F5;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'>H</td><td id='cell-G36' style='background:#FFFBE1;text-align:center;vertical-align:center;border-top:1px solid #333;border-bottom:1px solid #333;border-left:1px solid #333;border-right:1px solid #333;'></td><td id='cell-H36' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I36' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-B37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H37' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-I37' style='background:#ffffff;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A38' style='background:#ffffff;'></td><td id='cell-B38' style='background:#ffffff;text-align:center;vertical-align:center;' colspan='6'></td><td id='cell-H38' style='background:#ffffff;'></td><td id='cell-I38' style='background:#ffffff;'></td><td id='cell-J38' style='background:#ffffff;'></td><td id='cell-K38' style='background:#ffffff;'></td><td id='cell-L38' style='background:#ffffff;'></td><td id='cell-M38' style='background:#ffffff;'></td><td id='cell-N38' style='background:#ffffff;'></td><td id='cell-O38' style='background:#ffffff;'></td><td id='cell-P38' style='background:#ffffff;'></td><td id='cell-Q38' style='background:#ffffff;'></td><td id='cell-R38' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A39' style='background:#ffffff;'></td><td id='cell-B39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-C39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-D39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-E39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-F39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-G39' style='background:#ffffff;text-align:center;vertical-align:center;'></td><td id='cell-H39' style='background:#ffffff;'></td><td id='cell-I39' style='background:#ffffff;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-B40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-C40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-D40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-E40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-F40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-G40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td><td id='cell-H40' style='background:#FFCC00;text-align:center;vertical-align:center;'></td>
+				</tr>
+				<tr>
+					<td id='cell-A41' style='background:#ffffff;'></td><td id='cell-B41' style='background:#ffffff;'></td><td id='cell-C41' style='background:#ffffff;'></td><td id='cell-D41' style='background:#ffffff;'></td><td id='cell-E41' style='background:#ffffff;'></td><td id='cell-F41' style='background:#ffffff;'></td><td id='cell-G41' style='background:#ffffff;'></td><td id='cell-H41' style='background:#ffffff;'></td><td id='cell-I41' style='background:#ffffff;'></td>
+			</tr>
+			</table>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function navigateTo(id){ document.querySelectorAll('.page').forEach(function(p){p.style.display='none'}); var el=document.getElementById('page-'+id); if(el) el.style.display='block'; document.getElementById('sidebar').classList.remove('open'); }
+document.getElementById('menu-toggle').addEventListener('click', function(){ document.getElementById('sidebar').classList.toggle('open'); });
+var first=document.querySelector('.page'); if(first) first.style.display='block';
+</script>
+<script>
+function berechnen_Standard(){
+  let breite = document.getElementById('input-breite').value;
+  let hoehe = document.getElementById('input-hoehe').value;
+  let auswahl = document.getElementById('input-select').value;
+
+  let b = parseFloat(breite);
+  let h = parseFloat(hoehe);
+
+  let G17, G18;
+  if(isNaN(b)){
+    G17 = "Breite fehlt";
+  } else {
+    switch(auswahl){
+      case "Wandöffnungsmaß": G17 = b+0; break;
+      case "Futteraußenmaß": G17 = b+20; break;
+      case "Lichtes Zargendurchangsmaß": G17 = b+66; break;
+      case "Zargenfalzmaß": G17 = b+44; break;
+      case "Türblattaußenmaß (gefälzt)": G17 = b+25; break;
+      case "Türblattaußenmaß Stumpf (GG-Türe)": G17 = b+51; break;
+      case "Bekleidungsaußenmaß (60mm Bekl.)": G17 = b-76; break;
+      default: G17 = "Breite fehlt";
+    }
+  }
+
+  if(isNaN(h)){
+    G18 = "Höhe fehlt";
+  } else {
+    switch(auswahl){
+      case "Wandöffnungsmaß": G18 = h+0; break;
+      case "Futteraußenmaß": G18 = h+17; break;
+      case "Lichtes Zargendurchangsmaß": G18 = h+40; break;
+      case "Zargenfalzmaß": G18 = h+29; break;
+      case "Türblattaußenmaß (gefälzt)": G18 = h+25; break;
+      case "Türblattaußenmaß Stumpf (GG-Türe)": G18 = h+38; break;
+      case "Bekleidungsaußenmaß (60mm Bekl.)": G18 = h-31; break;
+      default: G18 = "Höhe fehlt";
+    }
+  }
+
+  function calc(val, expr){
+    if(val==="Breite fehlt" || val==="Höhe fehlt"){ return val; }
+    return expr(val);
+  }
+
+  let G20 = calc(G17, x=>x-20);
+  let G21 = calc(G18, x=>x-17);
+  let G23 = calc(G17, x=>x-66);
+  let G24 = calc(G18, x=>x-40);
+  let G26 = calc(G17, x=>x-44);
+  let G27 = calc(G18, x=>x-29);
+  let G29 = calc(G17, x=>x-25);
+  let G30 = calc(G18, x=>x-25);
+  let G32 = calc(G17, x=>G29-26);
+  let G33 = calc(G18, x=>G30-13);
+  let G35 = calc(G17, x=>G29+101);
+  let G36 = calc(G18, x=>G30+56);
+
+  let outputs = {G17,G18,G20,G21,G23,G24,G26,G27,G29,G30,G32,G33,G35,G36};
+  for(const [cell,val] of Object.entries(outputs)){
+    let td=document.getElementById('cell-'+cell);
+    if(td) td.innerText=val;
+  }
+}
+function compute_blockrahmen(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var sel = document.getElementById('input-'+sheet+'-B7');
+    if(sel && coord=='B7') return sel.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord);
+    if(!td) return ''; return td.innerText;
+  }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return ''; var n=parseFloat(v); return isNaN(n)?v:n; }
+  try{
+    try{ var val = ((getNum('blockrahmen','C10'===\"\")),"Bitte Maß eintragen",""); var td = document.getElementById('cell-blockrahmen-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','C11', e); }
+    try{ var val = ((getNum('blockrahmen','G10'===\"\")),"Bitte Maß eintragen",""); var td = document.getElementById('cell-blockrahmen-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G11', e); }
+    try{ var val = ((getNum('blockrahmen','C10'===\"\")),"Breite fehlt",((getVal('blockrahmen' + 'B7')==="Blockrahmen Rohbaumaß",(getNum('blockrahmen' + 'C10')+0)),(getVal('blockrahmen','B7')==="Blockrahmen Außenmaß",(getNum('blockrahmen' + 'C10')+20)),(getVal('blockrahmen','B7')==="Türblattmaß",(getNum('blockrahmen' + 'C10')+109)),(getVal('blockrahmen','B7')==="Türblattmaß Stumpf(GG-TB)",(getNum('blockrahmen' + 'C10')+135)))); var td = document.getElementById('cell-blockrahmen-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G17', e); }
+    try{ var val = ((getNum('blockrahmen','G10'===\"\")),"Höhe fehlt",((getVal('blockrahmen' + 'B7')==="Blockrahmen Rohbaumaß",(getNum('blockrahmen' + 'G10')+0)),(getVal('blockrahmen','B7')==="Blockrahmen Außenmaß",(getNum('blockrahmen' + 'G10')+10)),(getVal('blockrahmen','B7')==="Türblattmaß",(getNum('blockrahmen' + 'G10')+60)),(getVal('blockrahmen','B7')==="Türblattmaß Stumpf(GG-TB)",(getNum('blockrahmen' + 'G10')+73)))); var td = document.getElementById('cell-blockrahmen-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G18', e); }
+    try{ var val = (getVal('blockrahmen','G17')==="Breite fehlt","Breite fehlt",(getNum('blockrahmen' + 'G17')-20)); var td = document.getElementById('cell-blockrahmen-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G19', e); }
+    try{ var val = (getVal('blockrahmen','G18')==="Höhe fehlt","Höhe fehlt",(getNum('blockrahmen' + 'G18')-10)); var td = document.getElementById('cell-blockrahmen-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G20', e); }
+    try{ var val = (getVal('blockrahmen','G17')==="Breite fehlt","Breite fehlt",(getNum('blockrahmen' + 'G19')-89)); var td = document.getElementById('cell-blockrahmen-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G21', e); }
+    try{ var val = (getVal('blockrahmen','G18')==="Höhe fehlt","Höhe fehlt",(getNum('blockrahmen' + 'G20')-50)); var td = document.getElementById('cell-blockrahmen-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G22', e); }
+    try{ var val = (getVal('blockrahmen','G17')==="Breite fehlt","Breite fehlt",(getNum('blockrahmen' + 'G21')-26)); var td = document.getElementById('cell-blockrahmen-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G23', e); }
+    try{ var val = (getVal('blockrahmen','G18')==="Höhe fehlt","Höhe fehlt",(getNum('blockrahmen' + 'G22')-13)); var td = document.getElementById('cell-blockrahmen-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','G24', e); }
+    try{ var val = (getVal('blockrahmen','G20')==="Höhe fehlt","",(getNum('blockrahmen','G20')>2750,"Rahmenaußenmaß Höhe max. 2750 mm","")); var td = document.getElementById('cell-blockrahmen-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('err','blockrahmen','B26', e); }
+  }catch(e){ console.log('compute error', e); }
+}}}}}
+function compute_blockrahmen-furnier(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('blockrahmen-furnier','C10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-furnier-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier C11', e); }
+  try{ var val = IF(((getNum('blockrahmen-furnier','G10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-furnier-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G11', e); }
+  try{ var val = IF(((getNum('blockrahmen-furnier','C10')===\"\" )),"Breite fehlt",SUM(IF(getNum('blockrahmen-furnier','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-furnier','C10')+0)),IF(getNum('blockrahmen-furnier','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-furnier','C10')+20)),IF(getNum('blockrahmen-furnier','B7')="Türblattmaß",SUM(getNum('blockrahmen-furnier','C10')+135)),IF(getNum('blockrahmen-furnier','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blockrahmen-furnier','C10')+161)))); var td=document.getElementById('cell-blockrahmen-furnier-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G17', e); }
+  try{ var val = IF(((getNum('blockrahmen-furnier','G10')===\"\" )),"Höhe fehlt",SUM(IF(getNum('blockrahmen-furnier','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-furnier','G10')+0)),IF(getNum('blockrahmen-furnier','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-furnier','G10')+10)),IF(getNum('blockrahmen-furnier','B7')="Türblattmaß",SUM(getNum('blockrahmen-furnier','G10')+73)),IF(getNum('blockrahmen-furnier','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blockrahmen-furnier','G10')+86)))); var td=document.getElementById('cell-blockrahmen-furnier-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G18', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-furnier','G17')-20)); var td=document.getElementById('cell-blockrahmen-furnier-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G19', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-furnier','G18')-10)); var td=document.getElementById('cell-blockrahmen-furnier-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G20', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-furnier','G19')-115)); var td=document.getElementById('cell-blockrahmen-furnier-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G21', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-furnier','G20')-63)); var td=document.getElementById('cell-blockrahmen-furnier-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G22', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-furnier','G21')-26)); var td=document.getElementById('cell-blockrahmen-furnier-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G23', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-furnier','G22')-13)); var td=document.getElementById('cell-blockrahmen-furnier-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier G24', e); }
+  try{ var val = IF(getNum('blockrahmen-furnier','G20')="Höhe fehlt","",IF(getNum('blockrahmen-furnier','G20')>2750,"Rahmenaußenmaß Höhe max. 2750 mm","")); var td=document.getElementById('cell-blockrahmen-furnier-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-furnier B26', e); }
+}}}}}
+
+function compute_blockrahmen-blanche(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('blockrahmen-blanche','C10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-blanche-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche C11', e); }
+  try{ var val = IF(((getNum('blockrahmen-blanche','G10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-blanche-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G11', e); }
+  try{ var val = IF(((getNum('blockrahmen-blanche','C10')===\"\" )),"Breite fehlt",
+SUM(IF(getNum('blockrahmen-blanche','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-blanche','C10')+0)),
+IF(getNum('blockrahmen-blanche','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-blanche','C10')+20)),
+IF(getNum('blockrahmen-blanche','B7')="Türblattmaß",SUM(getNum('blockrahmen-blanche','C10')+99)),
+IF(getNum('blockrahmen-blanche','B7')="Ganzglas TB-Maß)",SUM(getNum('blockrahmen-blanche','C10')+105)))); var td=document.getElementById('cell-blockrahmen-blanche-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G17', e); }
+  try{ var val = IF(((getNum('blockrahmen-blanche','G10')===\"\" )),"Höhe fehlt",SUM(
+IF(getNum('blockrahmen-blanche','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-blanche','G10')+0)),
+IF(getNum('blockrahmen-blanche','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-blanche','G10')+10)),
+IF(getNum('blockrahmen-blanche','B7')="Türblattmaß",SUM(getNum('blockrahmen-blanche','G10')+57)),
+IF(getNum('blockrahmen-blanche','B7')="Ganzglas TB-Maß",SUM(getNum('blockrahmen-blanche','G10')+60)))); var td=document.getElementById('cell-blockrahmen-blanche-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G18', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-blanche','G17')-20)); var td=document.getElementById('cell-blockrahmen-blanche-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G19', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-blanche','G18')-10)); var td=document.getElementById('cell-blockrahmen-blanche-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G20', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-blanche','G19')-79)); var td=document.getElementById('cell-blockrahmen-blanche-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G21', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-blanche','G20')-47)); var td=document.getElementById('cell-blockrahmen-blanche-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G22', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-blanche','G21')-26)); var td=document.getElementById('cell-blockrahmen-blanche-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G23', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-blanche','G22')-13)); var td=document.getElementById('cell-blockrahmen-blanche-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche G24', e); }
+  try{ var val = IF(getNum('blockrahmen-blanche','G20')="Höhe fehlt","",IF(getNum('blockrahmen-blanche','G20')>2157,"Rahmenaußenmaß Höhe max. 2157 mm","")); var td=document.getElementById('cell-blockrahmen-blanche-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-blanche B26', e); }
+}}}
+
+function compute_blockrahmen-linea(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('blockrahmen-linea','C10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-linea-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea C11', e); }
+  try{ var val = IF(((getNum('blockrahmen-linea','G10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blockrahmen-linea-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G11', e); }
+  try{ var val = IF(((getNum('blockrahmen-linea','C10')===\"\" )),"Breite fehlt",
+SUM(IF(getNum('blockrahmen-linea','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-linea','C10')+0)),
+IF(getNum('blockrahmen-linea','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-linea','C10')+20)),
+IF(getNum('blockrahmen-linea','B7')="Türblattmaß",SUM(getNum('blockrahmen-linea','C10')+107)),
+IF(getNum('blockrahmen-linea','B7')="Ganzglas TB-Maß)",SUM(getNum('blockrahmen-linea','C10')+133)))); var td=document.getElementById('cell-blockrahmen-linea-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G17', e); }
+  try{ var val = IF(((getNum('blockrahmen-linea','G10')===\"\" )),"Höhe fehlt",SUM(
+IF(getNum('blockrahmen-linea','B7')="Blockrahmen Rohbaumaß",SUM(getNum('blockrahmen-linea','G10')+0)),
+IF(getNum('blockrahmen-linea','B7')="Blockrahmen Außenmaß",SUM(getNum('blockrahmen-linea','G10')+10)),
+IF(getNum('blockrahmen-linea','B7')="Türblattmaß",SUM(getNum('blockrahmen-linea','G10')+60)),
+IF(getNum('blockrahmen-linea','B7')="Ganzglas TB-Maß",SUM(getNum('blockrahmen-linea','G10')+73)))); var td=document.getElementById('cell-blockrahmen-linea-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G18', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-linea','G17')-20)); var td=document.getElementById('cell-blockrahmen-linea-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G19', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-linea','G18')-10)); var td=document.getElementById('cell-blockrahmen-linea-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G20', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-linea','G19')-87)); var td=document.getElementById('cell-blockrahmen-linea-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G21', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-linea','G20')-50)); var td=document.getElementById('cell-blockrahmen-linea-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G22', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blockrahmen-linea','G21')-26)); var td=document.getElementById('cell-blockrahmen-linea-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G23', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blockrahmen-linea','G22')-13)); var td=document.getElementById('cell-blockrahmen-linea-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea G24', e); }
+  try{ var val = IF(getNum('blockrahmen-linea','G20')="Höhe fehlt","",IF(getNum('blockrahmen-linea','G20')>2750,"Rahmenaußenmaß Höhe max. 2750 mm","")); var td=document.getElementById('cell-blockrahmen-linea-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blockrahmen-linea B26', e); }
+}}}
+
+function compute_blendrahmen(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('blendrahmen','C10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blendrahmen-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen C11', e); }
+  try{ var val = IF(((getNum('blendrahmen','G10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blendrahmen-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G11', e); }
+  try{ var val = IF(((getNum('blendrahmen','C10')===\"\" )),"Breite fehlt",SUM(IF(getNum('blendrahmen','B7')="Blendrahmen Rohbaumaß",SUM(getNum('blendrahmen','C10')+0)),IF(getNum('blendrahmen','B7')="Blendrahmen Außenmaß",SUM(getNum('blendrahmen','C10')-130)),IF(getNum('blendrahmen','B7')="Türblattmaß",SUM(getNum('blendrahmen','C10')-21)),IF(getNum('blendrahmen','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blendrahmen','C10')+5)))); var td=document.getElementById('cell-blendrahmen-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G17', e); }
+  try{ var val = IF(((getNum('blendrahmen','G10')===\"\" )),"Höhe fehlt",SUM(IF(getNum('blendrahmen','B7')="Blendrahmen Rohbaumaß",SUM(getNum('blendrahmen','G10')+0)),IF(getNum('blendrahmen','B7')="Blendrahmen Außenmaß",SUM(getNum('blendrahmen','G10')-65)),IF(getNum('blendrahmen','B7')="Türblattmaß",SUM(getNum('blendrahmen','G10')-5)),IF(getNum('blendrahmen','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blendrahmen','G10')-8)))); var td=document.getElementById('cell-blendrahmen-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G18', e); }
+  try{ var val = IF(getNum('blendrahmen','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen','G21')+109)); var td=document.getElementById('cell-blendrahmen-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G19', e); }
+  try{ var val = IF(getNum('blendrahmen','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen','G22')+60)); var td=document.getElementById('cell-blendrahmen-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G20', e); }
+  try{ var val = IF(getNum('blendrahmen','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen','G17')+21)); var td=document.getElementById('cell-blendrahmen-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G21', e); }
+  try{ var val = IF(getNum('blendrahmen','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen','G18')+5)); var td=document.getElementById('cell-blendrahmen-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G22', e); }
+  try{ var val = IF(getNum('blendrahmen','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen','G21')-26)); var td=document.getElementById('cell-blendrahmen-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G23', e); }
+  try{ var val = IF(getNum('blendrahmen','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen','G22')-13)); var td=document.getElementById('cell-blendrahmen-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen G24', e); }
+  try{ var val = IF(getNum('blendrahmen','G20')="Höhe fehlt","",IF(getNum('blendrahmen','G20')>2750,"Rahmenaußenmaß Höhe max. 2750 mm","")); var td=document.getElementById('cell-blendrahmen-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen B26', e); }
+}}}}}
+
+function compute_blendrahmen-blanche(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('blendrahmen-blanche','C10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blendrahmen-blanche-C11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche C11', e); }
+  try{ var val = IF(((getNum('blendrahmen-blanche','G10')===\"\" )),"Bitte Maß eintragen",""); var td=document.getElementById('cell-blendrahmen-blanche-G11'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G11', e); }
+  try{ var val = IF(((getNum('blendrahmen-blanche','C10')===\"\" )),"Breite fehlt",SUM(
+IF(getNum('blendrahmen-blanche','B7')="Blendrahmen Rohbaumaß",SUM(getNum('blendrahmen-blanche','C10')+0)),
+IF(getNum('blendrahmen-blanche','B7')="Blendrahmen Außenmaß",SUM(getNum('blendrahmen-blanche','C10')-144)),
+IF(getNum('blendrahmen-blanche','B7')="Türblattmaß",SUM(getNum('blendrahmen-blanche','C10')-25)),
+IF(getNum('blendrahmen-blanche','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blendrahmen-blanche','C10')+5)))); var td=document.getElementById('cell-blendrahmen-blanche-G17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G17', e); }
+  try{ var val = IF(((getNum('blendrahmen-blanche','G10')===\"\" )),"Höhe fehlt",SUM(
+IF(getNum('blendrahmen-blanche','B7')="Blendrahmen Rohbaumaß",SUM(getNum('blendrahmen-blanche','G10')+0)),
+IF(getNum('blendrahmen-blanche','B7')="Blendrahmen Außenmaß",SUM(getNum('blendrahmen-blanche','G10')-72)),
+IF(getNum('blendrahmen-blanche','B7')="Türblattmaß",SUM(getNum('blendrahmen-blanche','G10')-5)),
+IF(getNum('blendrahmen-blanche','B7')="Türblattmaß Stumpf(GG-TB)",SUM(getNum('blendrahmen-blanche','G10')-8)))); var td=document.getElementById('cell-blendrahmen-blanche-G18'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G18', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen-blanche','G21')+119)); var td=document.getElementById('cell-blendrahmen-blanche-G19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G19', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen-blanche','G22')+65)); var td=document.getElementById('cell-blendrahmen-blanche-G20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G20', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen-blanche','G17')+25)); var td=document.getElementById('cell-blendrahmen-blanche-G21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G21', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen-blanche','G18')+5)); var td=document.getElementById('cell-blendrahmen-blanche-G22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G22', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G17')="Breite fehlt","Breite fehlt",SUM(getNum('blendrahmen-blanche','G21')-26)); var td=document.getElementById('cell-blendrahmen-blanche-G23'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G23', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G18')="Höhe fehlt","Höhe fehlt",SUM(getNum('blendrahmen-blanche','G22')-13)); var td=document.getElementById('cell-blendrahmen-blanche-G24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche G24', e); }
+  try{ var val = IF(getNum('blendrahmen-blanche','G20')="Höhe fehlt","",IF(getNum('blendrahmen-blanche','G20')>2750,"Rahmenaußenmaß Höhe max. 2750 mm","")); var td=document.getElementById('cell-blendrahmen-blanche-B26'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error blendrahmen-blanche B26', e); }
+}}}
+
+function compute_lichtausschnitte(){
+  function getVal(sheet, coord){
+    var inEl = document.getElementById('input-'+sheet+'-'+coord);
+    if(inEl) return inEl.value;
+    var td = document.getElementById('cell-'+sheet+'-'+coord); if(!td) return ''; return td.innerText; }
+  function getNum(sheet, coord){ var v = getVal(sheet,coord); if(v==='') return NaN; var n=parseFloat(v); return isNaN(n)?v:n; }
+  function isBlank(x){ return x===''; }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Maß",""); var td=document.getElementById('cell-lichtausschnitte-B7'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte B7', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Maß",""); var td=document.getElementById('cell-lichtausschnitte-E7'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte E7', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Breite fehlt",SUM(getNum('lichtausschnitte','B6')-160-160-5)); var td=document.getElementById('cell-lichtausschnitte-D14'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D14', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','E6')===\"\" )),"Höhe fehlt",
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E3'),Bandabstand!getNum('lichtausschnitte','F3'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E4'),Bandabstand!getNum('lichtausschnitte','F4'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E5'),Bandabstand!getNum('lichtausschnitte','F5'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E6'),Bandabstand!getNum('lichtausschnitte','F6'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E7'),Bandabstand!getNum('lichtausschnitte','F7'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E8'),Bandabstand!getNum('lichtausschnitte','F8'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E9'),Bandabstand!getNum('lichtausschnitte','F9'),
+IF(getNum('lichtausschnitte','E6')<=Bandabstand!getNum('lichtausschnitte','E10'),Bandabstand!getNum('lichtausschnitte','F10')))))))))); var td=document.getElementById('cell-lichtausschnitte-D15'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D15', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Breite fehlt",SUM(getNum('lichtausschnitte','B6')-193-193-5)); var td=document.getElementById('cell-lichtausschnitte-D16'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D16', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','E6')===\"\" )),"Höhe fehlt",SUM(getNum('lichtausschnitte','E6')-193-180-5)); var td=document.getElementById('cell-lichtausschnitte-D17'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D17', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','E6')===\"\" )),"Höhe fehlt",SUM(getNum('lichtausschnitte','E6')-193-180-5)); var td=document.getElementById('cell-lichtausschnitte-D19'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D19', e); }
+  try{ var val = IF(getNum('lichtausschnitte','B6')<=735,"<< Lichtausschnitt nicht möglich",""); var td=document.getElementById('cell-lichtausschnitte-E20'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte E20', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','E6')===\"\" )),"Höhe fehlt",SUM(getNum('lichtausschnitte','E6')-193-180-5)); var td=document.getElementById('cell-lichtausschnitte-D21'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D21', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Breite fehlt",SUM(getNum('lichtausschnitte','B6')-193-193-5)); var td=document.getElementById('cell-lichtausschnitte-D22'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D22', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','B6')===\"\" )),"Breite fehlt",SUM(getNum('lichtausschnitte','B6')-160-160-5)); var td=document.getElementById('cell-lichtausschnitte-D24'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D24', e); }
+  try{ var val = IF(((getNum('lichtausschnitte','E6')===\"\" )),"Höhe fehlt",SUM((getNum('lichtausschnitte','E6')-160-350-160-160-5)/3)); var td=document.getElementById('cell-lichtausschnitte-D25'); if(td) td.innerText = (val===undefined? '': val); }catch(e){ console.log('formula error lichtausschnitte D25', e); }
+}}}}}}}}}}}
+</script>
+</body></html>

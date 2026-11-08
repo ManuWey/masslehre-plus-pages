@@ -1,0 +1,499 @@
+{
+  "sourceFile": "SUEHAC_Maßlehre+_V2.1.6(9.2).xlsm",
+  "fileVersion": "V2.1.9.3",
+  "formulaCount": 746,
+  "sheetCount": 54,
+  "sheets": [
+    {
+      "name": "Update Infos",
+      "file": "sheets/Update_Infos.json",
+      "maxRow": 60,
+      "maxColumn": 11,
+      "cellCount": 122,
+      "formulaCount": 0,
+      "inputCount": 0
+    },
+    {
+      "name": "Inhaltsverzeichnis",
+      "file": "sheets/Inhaltsverzeichnis.json.gz",
+      "maxRow": 65,
+      "maxColumn": 16384,
+      "cellCount": 16580,
+      "formulaCount": 1,
+      "inputCount": 160
+    },
+    {
+      "name": "Standard",
+      "file": "sheets/Standard.json",
+      "maxRow": 70,
+      "maxColumn": 18,
+      "cellCount": 366,
+      "formulaCount": 19,
+      "inputCount": 6
+    },
+    {
+      "name": "Stahlzargen",
+      "file": "sheets/Stahlzargen.json",
+      "maxRow": 66,
+      "maxColumn": 18,
+      "cellCount": 327,
+      "formulaCount": 16,
+      "inputCount": 6
+    },
+    {
+      "name": "Blockrahmen",
+      "file": "sheets/Blockrahmen.json",
+      "maxRow": 28,
+      "maxColumn": 17,
+      "cellCount": 108,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "Blockrahmen Furnier",
+      "file": "sheets/Blockrahmen_Furnier.json",
+      "maxRow": 28,
+      "maxColumn": 17,
+      "cellCount": 108,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "Blockrahmen Blanche",
+      "file": "sheets/Blockrahmen_Blanche.json",
+      "maxRow": 30,
+      "maxColumn": 17,
+      "cellCount": 120,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "Blockrahmen LINEA",
+      "file": "sheets/Blockrahmen_LINEA.json",
+      "maxRow": 27,
+      "maxColumn": 17,
+      "cellCount": 108,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "Blendrahmen",
+      "file": "sheets/Blendrahmen.json",
+      "maxRow": 27,
+      "maxColumn": 9,
+      "cellCount": 102,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "Blendrahmen Blanche",
+      "file": "sheets/Blendrahmen_Blanche.json",
+      "maxRow": 27,
+      "maxColumn": 9,
+      "cellCount": 102,
+      "formulaCount": 11,
+      "inputCount": 9
+    },
+    {
+      "name": "KLASSIK IL Holz",
+      "file": "sheets/KLASSIK_IL_Holz.json",
+      "maxRow": 47,
+      "maxColumn": 22,
+      "cellCount": 172,
+      "formulaCount": 16,
+      "inputCount": 11
+    },
+    {
+      "name": "ST-IL",
+      "file": "sheets/ST-IL.json",
+      "maxRow": 2,
+      "maxColumn": 2,
+      "cellCount": 4,
+      "formulaCount": 0,
+      "inputCount": 0
+    },
+    {
+      "name": "KLASSIK IL Glas",
+      "file": "sheets/KLASSIK_IL_Glas.json",
+      "maxRow": 46,
+      "maxColumn": 23,
+      "cellCount": 155,
+      "formulaCount": 16,
+      "inputCount": 9
+    },
+    {
+      "name": "KLASSIK AL Holz",
+      "file": "sheets/KLASSIK_AL_Holz.json",
+      "maxRow": 36,
+      "maxColumn": 15,
+      "cellCount": 142,
+      "formulaCount": 14,
+      "inputCount": 5
+    },
+    {
+      "name": "KLASSIK AL Glas",
+      "file": "sheets/KLASSIK_AL_Glas.json",
+      "maxRow": 54,
+      "maxColumn": 10,
+      "cellCount": 173,
+      "formulaCount": 14,
+      "inputCount": 7
+    },
+    {
+      "name": "SIMPLE IL Holz",
+      "file": "sheets/SIMPLE_IL_Holz.json",
+      "maxRow": 44,
+      "maxColumn": 12,
+      "cellCount": 140,
+      "formulaCount": 15,
+      "inputCount": 11
+    },
+    {
+      "name": "SIMPLE IL Glas",
+      "file": "sheets/SIMPLE_IL_Glas.json",
+      "maxRow": 42,
+      "maxColumn": 12,
+      "cellCount": 149,
+      "formulaCount": 15,
+      "inputCount": 10
+    },
+    {
+      "name": "SLIM AL Holz",
+      "file": "sheets/SLIM_AL_Holz.json",
+      "maxRow": 32,
+      "maxColumn": 10,
+      "cellCount": 116,
+      "formulaCount": 11,
+      "inputCount": 7
+    },
+    {
+      "name": "SLIM AL Glas",
+      "file": "sheets/SLIM_AL_Glas.json",
+      "maxRow": 32,
+      "maxColumn": 10,
+      "cellCount": 113,
+      "formulaCount": 11,
+      "inputCount": 7
+    },
+    {
+      "name": "EASY Holz",
+      "file": "sheets/EASY_Holz.json",
+      "maxRow": 40,
+      "maxColumn": 10,
+      "cellCount": 131,
+      "formulaCount": 15,
+      "inputCount": 7
+    },
+    {
+      "name": "EASY Glas",
+      "file": "sheets/EASY_Glas.json",
+      "maxRow": 40,
+      "maxColumn": 17,
+      "cellCount": 135,
+      "formulaCount": 15,
+      "inputCount": 7
+    },
+    {
+      "name": "BARN Holz",
+      "file": "sheets/BARN_Holz.json",
+      "maxRow": 42,
+      "maxColumn": 17,
+      "cellCount": 221,
+      "formulaCount": 14,
+      "inputCount": 7
+    },
+    {
+      "name": "BARN Glas",
+      "file": "sheets/BARN_Glas.json",
+      "maxRow": 38,
+      "maxColumn": 17,
+      "cellCount": 215,
+      "formulaCount": 14,
+      "inputCount": 7
+    },
+    {
+      "name": "LODGE Holz",
+      "file": "sheets/LODGE_Holz.json",
+      "maxRow": 60,
+      "maxColumn": 14,
+      "cellCount": 235,
+      "formulaCount": 16,
+      "inputCount": 7
+    },
+    {
+      "name": "LODGE Glas",
+      "file": "sheets/LODGE_Glas.json",
+      "maxRow": 38,
+      "maxColumn": 13,
+      "cellCount": 212,
+      "formulaCount": 14,
+      "inputCount": 7
+    },
+    {
+      "name": "WF1 FU",
+      "file": "sheets/WF1_FU.json",
+      "maxRow": 48,
+      "maxColumn": 11,
+      "cellCount": 271,
+      "formulaCount": 19,
+      "inputCount": 6
+    },
+    {
+      "name": "WF2 FU",
+      "file": "sheets/WF2_FU.json",
+      "maxRow": 48,
+      "maxColumn": 11,
+      "cellCount": 263,
+      "formulaCount": 19,
+      "inputCount": 6
+    },
+    {
+      "name": "WF3 FU",
+      "file": "sheets/WF3_FU.json",
+      "maxRow": 51,
+      "maxColumn": 11,
+      "cellCount": 208,
+      "formulaCount": 23,
+      "inputCount": 7
+    },
+    {
+      "name": "WF4 FU",
+      "file": "sheets/WF4_FU.json",
+      "maxRow": 51,
+      "maxColumn": 11,
+      "cellCount": 347,
+      "formulaCount": 23,
+      "inputCount": 7
+    },
+    {
+      "name": "WF1 BLO",
+      "file": "sheets/WF1_BLO.json",
+      "maxRow": 38,
+      "maxColumn": 11,
+      "cellCount": 135,
+      "formulaCount": 17,
+      "inputCount": 5
+    },
+    {
+      "name": "WF2 BLO",
+      "file": "sheets/WF2_BLO.json",
+      "maxRow": 38,
+      "maxColumn": 11,
+      "cellCount": 133,
+      "formulaCount": 17,
+      "inputCount": 5
+    },
+    {
+      "name": "WF3 BLO",
+      "file": "sheets/WF3_BLO.json",
+      "maxRow": 43,
+      "maxColumn": 12,
+      "cellCount": 162,
+      "formulaCount": 21,
+      "inputCount": 6
+    },
+    {
+      "name": "WF4 BLO",
+      "file": "sheets/WF4_BLO.json",
+      "maxRow": 42,
+      "maxColumn": 13,
+      "cellCount": 154,
+      "formulaCount": 21,
+      "inputCount": 6
+    },
+    {
+      "name": "GH FU Oberblende MKOQ",
+      "file": "sheets/GH_FU_Oberblende_MKOQ.json",
+      "maxRow": 40,
+      "maxColumn": 11,
+      "cellCount": 149,
+      "formulaCount": 16,
+      "inputCount": 6
+    },
+    {
+      "name": "GH FU MKMQ",
+      "file": "sheets/GH_FU_MKMQ.json",
+      "maxRow": 40,
+      "maxColumn": 11,
+      "cellCount": 155,
+      "formulaCount": 17,
+      "inputCount": 6
+    },
+    {
+      "name": "GH FU MKOQ",
+      "file": "sheets/GH_FU_MKOQ.json",
+      "maxRow": 40,
+      "maxColumn": 11,
+      "cellCount": 155,
+      "formulaCount": 17,
+      "inputCount": 6
+    },
+    {
+      "name": "GH BLO MKMQ",
+      "file": "sheets/GH_BLO_MKMQ.json",
+      "maxRow": 34,
+      "maxColumn": 14,
+      "cellCount": 118,
+      "formulaCount": 15,
+      "inputCount": 5
+    },
+    {
+      "name": "GG-Pendeltüre",
+      "file": "sheets/GG-Pendelt_re.json",
+      "maxRow": 35,
+      "maxColumn": 10,
+      "cellCount": 182,
+      "formulaCount": 14,
+      "inputCount": 6
+    },
+    {
+      "name": "Holz-Pendeltüre",
+      "file": "sheets/Holz-Pendelt_re.json",
+      "maxRow": 39,
+      "maxColumn": 10,
+      "cellCount": 207,
+      "formulaCount": 17,
+      "inputCount": 6
+    },
+    {
+      "name": "2-flg Standard",
+      "file": "sheets/2-flg_Standard.json",
+      "maxRow": 53,
+      "maxColumn": 14,
+      "cellCount": 339,
+      "formulaCount": 27,
+      "inputCount": 10
+    },
+    {
+      "name": "2-flg Glas",
+      "file": "sheets/2-flg_Glas.json",
+      "maxRow": 41,
+      "maxColumn": 14,
+      "cellCount": 252,
+      "formulaCount": 17,
+      "inputCount": 10
+    },
+    {
+      "name": "BSS",
+      "file": "sheets/BSS.json",
+      "maxRow": 24,
+      "maxColumn": 10,
+      "cellCount": 84,
+      "formulaCount": 6,
+      "inputCount": 5
+    },
+    {
+      "name": "Zylinder Rechner",
+      "file": "sheets/Zylinder_Rechner.json",
+      "maxRow": 23,
+      "maxColumn": 5,
+      "cellCount": 56,
+      "formulaCount": 8,
+      "inputCount": 5
+    },
+    {
+      "name": "Zylinder",
+      "file": "sheets/Zylinder.json",
+      "maxRow": 88,
+      "maxColumn": 11,
+      "cellCount": 446,
+      "formulaCount": 0,
+      "inputCount": 10
+    },
+    {
+      "name": "Lichtausschnitte",
+      "file": "sheets/Lichtausschnitte.json",
+      "maxRow": 28,
+      "maxColumn": 9,
+      "cellCount": 144,
+      "formulaCount": 12,
+      "inputCount": 8
+    },
+    {
+      "name": "PRÜM-LA",
+      "file": "sheets/PR_M-LA.json",
+      "maxRow": 102,
+      "maxColumn": 9,
+      "cellCount": 385,
+      "formulaCount": 86,
+      "inputCount": 7
+    },
+    {
+      "name": "Classic-Glasmaße",
+      "file": "sheets/Classic-Glasma_e.json",
+      "maxRow": 21,
+      "maxColumn": 35,
+      "cellCount": 546,
+      "formulaCount": 0,
+      "inputCount": 0
+    },
+    {
+      "name": "Blanche-LA",
+      "file": "sheets/Blanche-LA.json",
+      "maxRow": 24,
+      "maxColumn": 7,
+      "cellCount": 85,
+      "formulaCount": 13,
+      "inputCount": 3
+    },
+    {
+      "name": "LINEA-LA",
+      "file": "sheets/LINEA-LA.json",
+      "maxRow": 33,
+      "maxColumn": 5,
+      "cellCount": 57,
+      "formulaCount": 7,
+      "inputCount": 3
+    },
+    {
+      "name": "Furnier-LA",
+      "file": "sheets/Furnier-LA.json",
+      "maxRow": 18,
+      "maxColumn": 5,
+      "cellCount": 53,
+      "formulaCount": 7,
+      "inputCount": 3
+    },
+    {
+      "name": "Bandabstand",
+      "file": "sheets/Bandabstand.json",
+      "maxRow": 20,
+      "maxColumn": 27,
+      "cellCount": 159,
+      "formulaCount": 5,
+      "inputCount": 0
+    },
+    {
+      "name": "Umrechnungen",
+      "file": "sheets/Umrechnungen.json",
+      "maxRow": 14,
+      "maxColumn": 8,
+      "cellCount": 80,
+      "formulaCount": 0,
+      "inputCount": 1
+    },
+    {
+      "name": "Berechnungen",
+      "file": "sheets/Berechnungen.json",
+      "maxRow": 18,
+      "maxColumn": 8,
+      "cellCount": 128,
+      "formulaCount": 0,
+      "inputCount": 0
+    },
+    {
+      "name": "Statistik",
+      "file": "sheets/Statistik.json",
+      "maxRow": 65,
+      "maxColumn": 7,
+      "cellCount": 132,
+      "formulaCount": 0,
+      "inputCount": 0
+    }
+  ],
+  "notes": [
+    "Die interne Versionsangabe aus dem Arbeitsblatt 'Update Infos' wurde ausgelesen.",
+    "Formeln werden im Browser mit einer eigenen Excel-kompatiblen Laufzeit ausgewertet.",
+    "Die Formel-Laufzeit unterstützt die in dieser Arbeitsmappe gefundenen Funktionen; die Ergebnisprüfung gegen Excel-Caches ist Bestandteil des Projekttests."
+  ]
+}

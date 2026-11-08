@@ -1,0 +1,16 @@
+{
+  "method": "Die Quelldatei wurde mit LibreOffice mit Beispiel-Eingaben neu berechnet; die JavaScript-Formel-Laufzeit wurde anschließend gegen die gespeicherten Ergebnisse verglichen.",
+  "scenarios": 6,
+  "sheets": [
+    "Standard",
+    "Blockrahmen",
+    "KLASSIK IL Holz",
+    "WF3 FU",
+    "2-flg Glas",
+    "Zylinder Rechner"
+  ],
+  "formulasCompared": 94,
+  "matches": 94,
+  "mismatches": 0,
+  "matchRatePercent": 100
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#17212b">
+<title>Maßlehre+</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <button id="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+  <div class="brand"><span class="brand-mark">M+</span><span>Maßlehre+</span></div>
+  <span class="top-version" id="version">Rechnerdaten werden geladen …</span>
+</header>
+<aside id="sidebar" class="sidebar" aria-label="Rechnernavigation">
+  <div class="sidebar-head"><span>Rechner auswählen</span><button id="home">Startseite</button></div>
+  <input id="search" type="search" placeholder="Rechner suchen …" aria-label="Rechner suchen">
+  <nav id="nav-list"></nav>
+</aside>
+<button id="scrim" class="scrim" hidden aria-label="Menü schließen"></button>
+<main>
+  <div id="load-error" class="error" hidden></div>
+  <section id="welcome" class="hero">
+    <div class="eyebrow">Tür- und Zargensysteme</div>
+    <h1>Maßlehre+</h1>
+    <p>Wähle links im Menü das gewünschte Tür- oder Zargensystem. Die Eingabefelder und Ergebnisse werden übersichtlich und mobil angepasst dargestellt.</p>
+    <button class="hero-action" onclick="document.getElementById('menu-toggle').click()">Rechner auswählen</button>
+  </section>
+  <section id="calculator" hidden>
+    <div class="page-head">
+      <div><h1 id="page-title"></h1><p id="page-subtitle"></p></div>
+      <div class="actions"><button id="reset" class="action">Eingaben zurücksetzen</button></div>
+    </div>
+    <div class="metrics"><span class="metric" id="input-count"></span><span class="metric" id="formula-count"></span></div>
+    <section class="panel"><h2>Eingaben</h2><div id="inputs" class="fields"></div></section>
+    <section class="panel"><h2>Berechnungsergebnisse</h2><div id="results"></div><div id="notes"></div></section>
+  </section>
+  <div class="footer">Maßlehre+ · Browserbasierte Rechneroberfläche · Arbeitsstand zur fachlichen Prüfung</div>
+</main>
+<script src="js/formula-engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
