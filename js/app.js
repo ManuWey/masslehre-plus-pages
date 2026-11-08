@@ -155,6 +155,7 @@ function pairedOutputGroups(sheet,formulas){
     const labelCell=sheet.cells[match[1]+startRow];
     const label=labelCell&&!labelCell.formula&&typeof labelCell.value==="string"?labelCell.value.trim():"";
     if(!label)continue;
+    if(new Set(["F5D200","FACA00"]).has(String(labelCell.meta?.fill?.fg||"").toUpperCase()))continue;
     const items=formulas.filter(([addr])=>{
       const cell=addr.match(/^([A-Z]+)(\d+)$/);if(!cell)return false;
       const row=Number(cell[2]),col=colNum(cell[1]);
