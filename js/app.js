@@ -132,8 +132,8 @@ function measureAxis(sheet,addr){
     const cell=sheet.cells[letter(c)+row];
     if(!cell||cell.formula||cell.value===null||cell.value===undefined)continue;
     const marker=String(cell.value).trim().toUpperCase();
-    if(marker==="B")return "Breite";
-    if(marker==="H")return "Höhe";
+    if(marker==="B"||marker.startsWith("BREITE"))return "Breite";
+    if(marker==="H"||marker.startsWith("HÖHE"))return "Höhe";
     if(marker)return "";
   }
   return "";
@@ -143,14 +143,15 @@ function pairedOutputGroups(sheet,formulas){
   for(const range of sheet.mergedRanges||[]){
     const match=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!match)continue;
     const startCol=colNum(match[1]),startRow=Number(match[2]),endCol=colNum(match[3]),endRow=Number(match[4]);
-    if(endRow<=startRow)continue;
     const labelCell=sheet.cells[match[1]+startRow];
     const label=labelCell&&!labelCell.formula&&typeof labelCell.value==="string"?labelCell.value.trim():"";
     if(!label)continue;
     const items=formulas.filter(([addr])=>{
       const cell=addr.match(/^([A-Z]+)(\d+)$/);if(!cell)return false;
       const row=Number(cell[2]),col=colNum(cell[1]);
-      return row>=startRow&&row<=endRow&&col>endCol&&Boolean(measureAxis(sheet,addr));
+      const inVerticalLabel=endRow>startRow&&row>=startRow&&row<=endRow&&col>endCol;
+      const underHorizontalLabel=endRow===startRow&&row>startRow&&row<=startRow+2&&col>=startCol&&col<=endCol;
+      return (inVerticalLabel||underHorizontalLabel)&&Boolean(measureAxis(sheet,addr));
     });
     const axes=items.map(([addr])=>measureAxis(sheet,addr));
     if(!axes.includes("Breite")||!axes.includes("Höhe"))continue;
@@ -161,7 +162,11 @@ function pairedOutputGroups(sheet,formulas){
 }
 function outputRows(sheet,book){
   const outputFills=new Set(["FFFBE1","FFF7C9","F5F5F5"]);
-  const formulas=Object.entries(sheet.cells).filter(([,cell])=>cell.formula&&outputFills.has(String(cell.meta?.fill?.fg||"").toUpperCase())).sort(([a],[b])=>{
+  const formulas=Object.entries(sheet.cells).filter(([addr,cell])=>{
+    if(!cell.formula||!outputFills.has(String(cell.meta?.fill?.fg||"").toUpperCase()))return false;
+    const value=book.value(sheet.name,addr);
+    return value!==null&&value!==undefined&&value!=="";
+  }).sort(([a],[b])=>{
     const ma=a.match(/^([A-Z]+)(\d+)$/),mb=b.match(/^([A-Z]+)(\d+)$/);
     return Number(ma?.[2]||0)-Number(mb?.[2]||0)||colNum(ma?.[1]||"A")-colNum(mb?.[1]||"A");
   });
