@@ -147,6 +147,28 @@ function measureAxis(sheet,addr){
   }
   return "";
 }
+function addressInRange(addr,range){
+  if(range===addr)return true;
+  const m=range.match(/^([A-Z]+\d+):([A-Z]+\d+)$/);if(!m)return false;
+  const a=m[1].match(/^([A-Z]+)(\d+)$/),b=m[2].match(/^([A-Z]+)(\d+)$/),c=addr.match(/^([A-Z]+)(\d+)$/);
+  if(!a||!b||!c)return false;
+  const col=colNum(c[1]),row=Number(c[2]);
+  return col>=colNum(a[1])&&col<=colNum(b[1])&&row>=Number(a[2])&&row<=Number(b[2]);
+}
+function conditionalFill(sheet,addr,value,book){
+  const rules=state.config.conditionalFormatting?.[sheet.name]||[];
+  for(const rule of rules){
+    if(!(rule.ranges||[]).some(range=>addressInRange(addr,range)))continue;
+    if(rule.kind==="contains-text"&&String(value??"").toLocaleLowerCase("de").includes(String(rule.needle||"").toLocaleLowerCase("de")))return rule.color;
+    if(rule.kind==="number-ranges"&&typeof value==="number"&&(rule.intervals||[]).some(([low,high])=>value>low&&value<high))return rule.color;
+    if(rule.kind==="not-equal-any"&&typeof value==="number"){
+      const gates=(rule.gates||[]).every(g=>String(book.value(sheet.name,g.cell))===g.equals);
+      if(gates&&(rule.values||[]).some(n=>value!==n))return rule.color;
+    }
+  }
+  return "";
+}
+function conditionalClass(color){return color==="#F5D200"?"near-standard":color==="#FF0000"?"warning-red":"";}
 function outputMeasureLabel(sheet,addr){
   const match=addr.match(/^([A-Z]+)(\d+)$/);if(!match)return labelFromCell(sheet,addr);
   const row=Number(match[2]),cells=sheet.cells;
@@ -254,7 +276,7 @@ function lightApertureRows(sheet,book){
     if(row.type==="heading")return `<div class="result-section-heading">${esc(row.label)}</div>`;
     const title=row.glass?`${row.model} · ${row.glass}`:row.model;
     const tag=row.tags.length?`<span class="la-tag">${row.tags.map(esc).join(" · ")}</span>`:"";
-    const measures=row.items.map(item=>`<div class="la-measure"><span>${esc(item.axis)}</span><strong>${esc(display(item.value))}</strong></div>`).join("");
+    const measures=row.items.map(item=>`<div class="la-measure ${conditionalClass(conditionalFill(sheet,item.addr,item.value,book))}"><span>${esc(item.axis)}</span><strong>${esc(display(item.value))}</strong></div>`).join("");
     return `<article class="la-result"><div class="la-result-head"><h3>${esc(title)}</h3>${tag}</div><div class="la-measures">${measures}</div></article>`;
   }).join("")||`<p class="muted">Für dieses Blatt sind keine Lichtausschnittmaße hinterlegt.</p>`;
 }
@@ -284,7 +306,7 @@ function outputRows(sheet,book){
     rows.push({type:"heading",row,label:labelCell.value.trim()});
   }
   rows.sort((a,b)=>a.row-b.row||(a.type==="heading"?-1:1)||(a.items?colNum(a.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0)-(b.items?colNum(b.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0));
-  return rows.map(row=>row.type==="heading"?`<div class="result-section-heading">${esc(row.label)}</div>`:`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${measureAxis(sheet,addr)?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
+  return rows.map(row=>row.type==="heading"?`<div class="result-section-heading">${esc(row.label)}</div>`:`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>{const value=book.value(sheet.name,addr),tone=conditionalClass(conditionalFill(sheet,addr,value,book));return `<div class="result-value ${tone}">${measureAxis(sheet,addr)?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(value))}</strong></div>`;}).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
 }
 function staticNotes(sheet){
   const items=[];
@@ -299,6 +321,19 @@ function staticNotes(sheet){
   }
   const unique=[...new Set(items)].slice(0,16);
   return unique.length?`<details class="notes"><summary>Hinweise aus dem Excel-Blatt</summary><ul>${unique.map(x=>`<li>${esc(x).replace(/\n/g," ")}</li>`).join("")}</ul></details>`:"";
+}
+function formulaMessages(sheet,book){
+  const messages=new Map(),outputFills=new Set(["FFFBE1","FFF7C9","F5F5F5"]),pattern=/(?:nicht möglich|fehlt|bitte maß|bitte ma[ßs] eintragen|keine angabe|klären|sondermaße|maß eintragen|max\.?\s*\d|rahmenaußenmaß)/i;
+  for(const [addr,cell] of Object.entries(sheet.cells)){
+    if(!cell.formula)continue;
+    const value=book.value(sheet.name,addr);
+    const color=conditionalFill(sheet,addr,value,book);
+    if(typeof value!=="string"||!value.trim()||(!pattern.test(value)&&color!=="#FF0000"))continue;
+    if(outputFills.has(String(cell.meta?.fill?.fg||"").toUpperCase()))continue;
+    const type=color==="#FF0000"?"warning-red":"warning-note";
+    if(!messages.has(value.trim()))messages.set(value.trim(),type);
+  }
+  return messages.size?`<div class="excel-messages"><h3>Hinweise aus der Excel-Berechnung</h3>${[...messages].map(([message,type])=>`<div class="excel-message ${type}">${esc(message)}</div>`).join("")}</div>`:"";
 }
 function renderNav(){
   const root=$("#nav-list");root.innerHTML="";
@@ -347,7 +382,7 @@ function renderCurrent(){
   const images=sheetImageGallery(sheet);
   $("#sheet-images").innerHTML=images;
   $("#image-panel").hidden=!images;
-  $("#notes").innerHTML=staticNotes(sheet);
+  $("#notes").innerHTML=staticNotes(sheet)+formulaMessages(sheet,book);
   $("#input-count").textContent=fields.length+" Eingaben";
   $("#formula-count").textContent=sheet.formulaCount||Object.values(sheet.cells).filter(c=>c.formula).length+" Formeln";
   $("#inputs").querySelectorAll("[data-cell]").forEach(el=>{
@@ -385,6 +420,7 @@ function closeNav(){state.menuOpen=false;$("#sidebar").classList.remove("open");
 async function init(){
   try{
     const r=await fetch("data/app-config.json");state.config=await r.json();
+    const cf=await fetch("data/conditional-formatting.json");state.config.conditionalFormatting=cf.ok?await cf.json():{};
     const imageIndex=await fetch("data/sheet-images.json");state.config.sheetImages=imageIndex.ok?await imageIndex.json():{};
     const idx=await fetch("data/workbook-index.json");const index=await idx.json();state.config.sheets=index.sheets;
     $("#version").textContent="Excel-Datenstand "+state.config.fileVersion;
