@@ -436,7 +436,7 @@ function openNav(){state.menuOpen=true;$("#sidebar").classList.add("open");$("#s
 function closeNav(){state.menuOpen=false;$("#sidebar").classList.remove("open");$("#scrim").hidden=true;$("#menu-toggle").setAttribute("aria-expanded","false");}
 async function init(){
   try{
-    const r=await fetch("data/app-config.json");state.config=await r.json();
+    const r=await fetch("data/app-config.json?v=0.3.17");state.config=await r.json();
     const cf=await fetch("data/conditional-formatting.json");state.config.conditionalFormatting=cf.ok?await cf.json():{};
     const imageIndex=await fetch("data/sheet-images.json");state.config.sheetImages=imageIndex.ok?await imageIndex.json():{};
     const idx=await fetch("data/workbook-index.json");const index=await idx.json();state.config.sheets=index.sheets;
