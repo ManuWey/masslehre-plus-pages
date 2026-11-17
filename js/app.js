@@ -71,12 +71,16 @@ function visibleInputs(sheet){
 }
 function letter(n){let s="";while(n){let r=(n-1)%26;s=String.fromCharCode(65+r)+s;n=Math.floor((n-1)/26);}return s;}
 function parseOptions(validation,sheetName,addr){
+  if(sheetName==="Zylinder Rechner"&&addr==="B5"){
+    const helper=state.workbook.Zylinder;if(!helper)return null;
+    return Array.from({length:12},(_,i)=>helper.cells["F"+(i+2)]?.value).filter(v=>v!==null&&v!==undefined&&String(v).trim()).map(String);
+  }
   if(!validation||validation.type!=="list"||!validation.formula1)return null;
   let f=validation.formula1;
   if(f.startsWith('"')&&f.endsWith('"'))return f.slice(1,-1).split(",").map(x=>x.trim()).filter(Boolean);
   if(f.toUpperCase()==="INDIRECT(B7)" && sheetName==="Zylinder Rechner" && addr==="B8"){
     const brand=getValue(sheetName,"B7");
-    const ref=brand==="Griffwerk"?["Zylinder","I",2,30]:["Zylinder","A",2,88];
+    const ref=brand==="Griffwerk"?["Zylinder","I",2,52]:["Zylinder","A",2,88];
     const helper=state.workbook[ref[0]];
     if(!helper)return null;
     const values=[];
@@ -85,7 +89,8 @@ function parseOptions(validation,sheetName,addr){
   }
   return null;
 }
-function inputType(input){
+function inputType(input,sheetName){
+  if(sheetName==="Zylinder Rechner"&&input.cell==="B5")return "select";
   const v=input.validation;
   if(v&&v.type==="list")return "select";
   if(v&&v.type==="whole")return "number";
@@ -99,6 +104,7 @@ function getValue(sheet,addr){
 }
 function setValue(sheet,addr,value){
   const k=sheet+"!"+addr;
+  if(sheet==="Zylinder Rechner"&&addr==="B7"&&String(getValue(sheet,"B7"))!==String(value))state.values[sheet+"!B8"]=null;
   state.values[k]=value===""?null:(/^-?\d+(?:[.,]\d+)?$/.test(String(value))?Number(String(value).replace(",",".")):value);
   renderCurrent();
 }
@@ -125,12 +131,14 @@ function display(v){
   return String(v);
 }
 function inputMarkup(sheet,input){
-  const addr=input.cell, label=input.label||labelFromCell(sheet,addr), val=getValue(sheet.name,addr), typ=inputType(input), opts=parseOptions(input.validation,sheet.name,addr);
+  const addr=input.cell, label=input.label||labelFromCell(sheet,addr), val=getValue(sheet.name,addr), typ=inputType(input,sheet.name), opts=parseOptions(input.validation,sheet.name,addr);
   let control="";
   if(typ==="select"&&opts){
-    control=`<select name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}">${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
+    const hasSelection=opts.some(o=>String(o)===String(val));
+    control=`<select name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}">${hasSelection?"":`<option value="" disabled selected>Bitte auswählen</option>`}${opts.map(o=>`<option ${String(o)===String(val)?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select>`;
   }else{
-    control=`<input name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="any" value="${esc(val??"")}" placeholder="Wert eingeben">`;
+    const v=input.validation||{},min=v.type==="whole"&&v.formula1?` min="${esc(v.formula1)}"`:"",max=v.type==="whole"&&v.formula2?` max="${esc(v.formula2)}"`:"",step=v.type==="whole"?"1":"any";
+    control=`<input name="${esc(addr)}" aria-label="${esc(label)}" data-cell="${esc(addr)}" type="${typ==="number"?"number":"text"}" step="${step}"${min}${max} value="${esc(val??"")}" placeholder="Wert eingeben">`;
   }
   return `<label class="field"><span class="field-caption"><span class="field-label">${esc(label)}</span></span>${control}</label>`;
 }
@@ -386,7 +394,16 @@ function renderCurrent(){
   $("#input-count").textContent=fields.length+" Eingaben";
   $("#formula-count").textContent=sheet.formulaCount||Object.values(sheet.cells).filter(c=>c.formula).length+" Formeln";
   $("#inputs").querySelectorAll("[data-cell]").forEach(el=>{
-    el.addEventListener("change",()=>setValue(sheet.name,el.dataset.cell,el.value));
+    el.addEventListener("change",()=>{
+      const input=fields.find(field=>field.cell===el.dataset.cell),validation=input?.validation,value=el.value;
+      if(validation?.type==="whole"&&value!==""){
+        const number=Number(value),min=Number(validation.formula1),max=Number(validation.formula2);
+        if(!Number.isInteger(number)||number<min||number>max){
+          el.setCustomValidity(`Bitte eine ganze Zahl zwischen ${min} und ${max} eintragen.`);el.reportValidity();el.value=getValue(sheet.name,el.dataset.cell)??"";return;
+        }
+      }
+      el.setCustomValidity("");setValue(sheet.name,el.dataset.cell,value);
+    });
   });
   renderNav();
 }
