@@ -216,7 +216,7 @@ function outputRows(sheet,book){
     rows.push({type:"heading",row,label:labelCell.value.trim()});
   }
   rows.sort((a,b)=>a.row-b.row||(a.type==="heading"?-1:1)||(a.items?colNum(a.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0)-(b.items?colNum(b.items[0][0].match(/^([A-Z]+)/)?.[1]||"A"):0));
-  return rows.map(row=>row.type==="heading"?`<div class="result-section-heading">${esc(row.label)}</div>`:`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${row.axisLabels?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
+  return rows.map(row=>row.type==="heading"?`<div class="result-section-heading">${esc(row.label)}</div>`:`<div class="result-row"><div class="result-label">${esc(row.label||"Ergebnis")}</div><div class="result-values">${row.items.map(([addr])=>`<div class="result-value">${measureAxis(sheet,addr)?`<span class="result-axis">${esc(measureAxis(sheet,addr))}</span>`:""}<strong>${esc(display(book.value(sheet.name,addr)))}</strong></div>`).join("")}</div></div>`).join("")||`<p class="muted">Für dieses Blatt sind keine Formeln hinterlegt.</p>`;
 }
 function staticNotes(sheet){
   const items=[];
