@@ -59,6 +59,13 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .la-measure{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 11px;border-radius:7px;background:#f7f8fa}
 .la-measure span{font-size:12px;color:#66737e;font-weight:600}
 .la-measure strong{font-size:14px;color:#17212b;font-variant-numeric:tabular-nums;text-align:right}
+.result-value.near-standard,.la-measure.near-standard{background:#fff4bd;border:1px solid #f0cf45}
+.result-value.warning-red,.la-measure.warning-red{background:#ffe4e4;border:1px solid #ed8b8b}
+.excel-messages{margin-top:14px;display:grid;gap:7px}
+.excel-messages h3{margin:0 0 2px;font-size:12px;color:#626e78}
+.excel-message{padding:9px 11px;border-radius:7px;font-size:12px;font-weight:650}
+.excel-message.warning-red{background:#ffe4e4;border:1px solid #ed8b8b;color:#8f1f1f}
+.excel-message.warning-note{background:#fff4d2;border:1px solid #ead38a;color:#675200}
 .notes{margin-top:14px;color:#5e6974;font-size:12px}
 .notes summary{cursor:pointer;font-weight:700}
 .notes li{margin:7px 0}
