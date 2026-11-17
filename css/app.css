@@ -51,6 +51,14 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .result-value span{font-size:10px;color:#84909b}
 .result-value .result-axis{font-size:11px;color:#74818c;font-weight:600}
 .result-value strong{font-size:14px;color:#18232d;overflow-wrap:anywhere}
+.la-result{padding:13px 14px;margin:8px 0;border:1px solid #e6eaee;border-radius:9px;background:#fff}
+.la-result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
+.la-result-head h3{margin:0;color:#25313c;font-size:14px;font-weight:700;white-space:pre-wrap}
+.la-tag{flex:0 1 auto;padding:4px 8px;border-radius:999px;background:#fff4c2;color:#5b4b00;font-size:11px;font-weight:650;text-align:center}
+.la-measures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.la-measure{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 11px;border-radius:7px;background:#f7f8fa}
+.la-measure span{font-size:12px;color:#66737e;font-weight:600}
+.la-measure strong{font-size:14px;color:#17212b;font-variant-numeric:tabular-nums;text-align:right}
 .notes{margin-top:14px;color:#5e6974;font-size:12px}
 .notes summary{cursor:pointer;font-weight:700}
 .notes li{margin:7px 0}
@@ -59,7 +67,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 26px 70px}
 .footer{padding:20px 0;color:#8a949e;font-size:11px;text-align:center}
 [hidden]{display:none!important}
 @media(min-width:1100px){.sidebar{width:310px}.sidebar.open{box-shadow:var(--shadow)}}
-@media(max-width:650px){.topbar{height:58px;padding:0 12px}.top-version{font-size:10px}.sidebar{top:58px;width:min(88vw,320px)}.scrim{inset:58px 0 0}main{padding:20px 13px 55px}.hero{padding:22px}.page-head{flex-direction:column}.fields{grid-template-columns:1fr}.panel{padding:15px}.result-row{grid-template-columns:1fr;gap:7px}.result-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.topbar{height:58px;padding:0 12px}.top-version{font-size:10px}.sidebar{top:58px;width:min(88vw,320px)}.scrim{inset:58px 0 0}main{padding:20px 13px 55px}.hero{padding:22px}.page-head{flex-direction:column}.fields{grid-template-columns:1fr}.panel{padding:15px}.result-row{grid-template-columns:1fr;gap:7px}.result-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.la-result-head{align-items:flex-start;flex-direction:column;gap:6px}}
 
 .table-wrap{max-width:100%;overflow:auto;border:1px solid #e4e9ee;border-radius:10px}
 .reference-table{border-collapse:collapse;width:100%;min-width:520px;font-size:12px}
