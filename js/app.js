@@ -190,6 +190,74 @@ function pairedOutputGroups(sheet,formulas){
   }
   return {groups,claimed};
 }
+const lightApertureSheets=new Set(["Lichtausschnitte","PRÜM-LA","Blanche-LA","LINEA-LA","Furnier-LA"]);
+function mergedCellText(sheet,column,row){
+  for(const range of sheet.mergedRanges||[]){
+    const m=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!m)continue;
+    const startRow=Number(m[2]),endRow=Number(m[4]);
+    if(m[1]===column&&row>=startRow&&row<=endRow){
+      const cell=sheet.cells[column+startRow];
+      if(cell&&!cell.formula&&typeof cell.value==="string"&&cell.value.trim())return cell.value.trim().replace(/\s+/g," ");
+    }
+  }
+  const direct=sheet.cells[column+row];
+  return direct&&!direct.formula&&typeof direct.value==="string"&&direct.value.trim()?direct.value.trim().replace(/\s+/g," "):"";
+}
+function mergedCellStartRow(sheet,column,row){
+  for(const range of sheet.mergedRanges||[]){
+    const m=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!m)continue;
+    if(m[1]===column&&row>=Number(m[2])&&row<=Number(m[4]))return Number(m[2]);
+  }
+  return row;
+}
+function lightApertureRows(sheet,book){
+  const rows=[],groups=new Map(),lastModel={value:""};
+  for(let r=10;r<=sheet.maxRow;r++){
+    const a=sheet.cells["A"+r];
+    const fill=String(a?.meta?.fill?.fg||"").toUpperCase();
+    if(a&&!a.formula&&typeof a.value==="string"&&a.value.trim()&&new Set(["F5D200","FACA00"]).has(fill)){
+      rows.push({type:"heading",row:r,label:a.value.trim()});
+    }
+    const axisCell=sheet.cells["C"+r],axisValue=axisCell&&!axisCell.formula?String(axisCell.value||"").trim().toUpperCase():"";
+    if(axisValue!=="B"&&axisValue!=="H")continue;
+    const output=sheet.cells["D"+r];if(!output)continue;
+    const value=output.formula?book.value(sheet.name,"D"+r):output.value;
+    if(value===null||value===undefined||value==="")continue;
+    let model=mergedCellText(sheet,"A",r);
+    if(model){lastModel.value=model;}else model=lastModel.value||"Lichtausschnitt";
+    const start=mergedCellStartRow(sheet,"A",r);
+    let glass="";
+    for(const range of sheet.mergedRanges||[]){
+      const m=range.match(/^B(\d+):B(\d+)$/);if(!m)continue;
+      const first=Number(m[1]),last=Number(m[2]);
+      if(r>=first&&r<=last){glass=mergedCellText(sheet,"B",r);break;}
+    }
+    if(!glass){
+      const direct=sheet.cells["B"+r];
+      if(direct&&!direct.formula&&typeof direct.value==="string")glass=direct.value.trim();
+    }
+    const key=[start,model,glass].join("|");
+    if(!groups.has(key)){
+      const tags=[];
+      for(const range of sheet.mergedRanges||[]){
+        const m=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!m)continue;
+        if(m[1]!=="F"||Number(m[2])!==r)continue;
+        const cell=sheet.cells["F"+r];
+        if(cell&&!cell.formula&&typeof cell.value==="string"&&cell.value.trim())tags.push(cell.value.trim());
+      }
+      const group={type:"la-result",row:r,model,glass,tags,items:[]};groups.set(key,group);rows.push(group);
+    }
+    groups.get(key).items.push({axis:axisValue==="B"?"Breite":"Höhe",value,addr:"D"+r});
+  }
+  rows.sort((a,b)=>a.row-b.row||(a.type==="heading"?-1:1));
+  return rows.map(row=>{
+    if(row.type==="heading")return `<div class="result-section-heading">${esc(row.label)}</div>`;
+    const title=row.glass?`${row.model} · ${row.glass}`:row.model;
+    const tag=row.tags.length?`<span class="la-tag">${row.tags.map(esc).join(" · ")}</span>`:"";
+    const measures=row.items.map(item=>`<div class="la-measure"><span>${esc(item.axis)}</span><strong>${esc(display(item.value))}</strong></div>`).join("");
+    return `<article class="la-result"><div class="la-result-head"><h3>${esc(title)}</h3>${tag}</div><div class="la-measures">${measures}</div></article>`;
+  }).join("")||`<p class="muted">Für dieses Blatt sind keine Lichtausschnittmaße hinterlegt.</p>`;
+}
 function outputRows(sheet,book){
   const outputFills=new Set(["FFFBE1","FFF7C9","F5F5F5"]);
   const formulas=Object.entries(sheet.cells).filter(([addr,cell])=>{
@@ -275,7 +343,7 @@ function renderCurrent(){
   $("#page-subtitle").textContent="Tür- und Zargensystem · Datenmodell "+state.config.fileVersion;
   const fields=visibleInputs(sheet);
   $("#inputs").innerHTML=fields.length?fields.map(x=>inputMarkup(sheet,x)).join(""):`<p class="muted">Dieses Tabellenblatt enthält keine erkannten Eingabefelder.</p>`;
-  $("#results").innerHTML=(state.config.referenceSheets||[]).includes(sheet.name)?referenceTable(sheet,book):outputRows(sheet,book);
+  $("#results").innerHTML=(state.config.referenceSheets||[]).includes(sheet.name)?referenceTable(sheet,book):lightApertureSheets.has(sheet.name)?lightApertureRows(sheet,book):outputRows(sheet,book);
   const images=sheetImageGallery(sheet);
   $("#sheet-images").innerHTML=images;
   $("#image-panel").hidden=!images;
