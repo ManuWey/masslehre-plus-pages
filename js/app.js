@@ -147,6 +147,26 @@ function measureAxis(sheet,addr){
   }
   return "";
 }
+function outputMeasureLabel(sheet,addr){
+  const match=addr.match(/^([A-Z]+)(\d+)$/);if(!match)return labelFromCell(sheet,addr);
+  const row=Number(match[2]),cells=sheet.cells;
+  const usable=value=>typeof value==="string"&&value.trim()&&!/^(B|H)$/i.test(value.trim());
+  const direct=cells["B"+row];
+  if(direct&&!direct.formula&&usable(direct.value))return direct.value.trim().replace(/\s+/g," ");
+  const merged=(sheet.mergedRanges||[]).flatMap(range=>{
+    const m=range.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!m)return [];
+    const startRow=Number(m[2]),endRow=Number(m[4]);
+    if(m[1]!=="B"||row<startRow||row>endRow)return [];
+    const cell=cells[m[1]+m[2]];
+    return cell&&!cell.formula&&usable(cell.value)?[{row:startRow,label:cell.value.trim().replace(/\s+/g," ")}]:[];
+  }).sort((a,b)=>b.row-a.row);
+  if(merged.length)return merged[0].label;
+  for(let c=3;c<=6;c++){
+    const cell=cells[letter(c)+row];
+    if(cell&&!cell.formula&&usable(cell.value)&&!/^\d+$/.test(cell.value.trim()))return cell.value.trim().replace(/\s+/g," ");
+  }
+  return labelFromCell(sheet,addr);
+}
 function pairedOutputGroups(sheet,formulas){
   const groups=[],claimed=new Set();
   for(const range of sheet.mergedRanges||[]){
@@ -181,10 +201,10 @@ function outputRows(sheet,book){
     return Number(ma?.[2]||0)-Number(mb?.[2]||0)||colNum(ma?.[1]||"A")-colNum(mb?.[1]||"A");
   });
   const paired=pairedOutputGroups(sheet,formulas);
-  const rows=[...paired.groups.map(group=>({type:"result",row:Number(group.items[0][0].match(/\d+$/)[0]),label:group.label,items:group.items,axisLabels:true}))];
+  const rows=[...paired.groups.map(group=>({type:"result",row:Number(group.items[0][0].match(/\d+$/)[0]),label:outputMeasureLabel(sheet,group.items[0][0])||group.label,items:group.items,axisLabels:true}))];
   for(const [addr] of formulas){
     if(paired.claimed.has(addr))continue;
-    rows.push({type:"result",row:Number(addr.match(/\d+$/)[0]),label:labelFromCell(sheet,addr),items:[[addr,sheet.cells[addr]]],axisLabels:false});
+    rows.push({type:"result",row:Number(addr.match(/\d+$/)[0]),label:outputMeasureLabel(sheet,addr),items:[[addr,sheet.cells[addr]]],axisLabels:false});
   }
   const firstOutputRow=rows.length?Math.min(...rows.map(row=>row.row)):Infinity;
   for(const range of sheet.mergedRanges||[]){
