@@ -1,0 +1,2127 @@
+{
+  "Standard": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B37:B39"
+      ],
+      "color": "#FF0000",
+      "needle": "Höhe",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Höhe\",B37)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G28"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G28>599,G28<621),AND(G28>724,G28<746),AND(G28>849,G28<871),AND(G28>974,G28<996),AND(G28>1099,G28<1121),AND(G28>1224,G28<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G29"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G29>1974,G29<1996),AND(G29>2099,G29<2121),AND(G29>2224,G29<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Stahlzargen": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B36:B38"
+      ],
+      "color": "#FF0000",
+      "needle": "Höhe",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Höhe\",B36)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G27"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G27>599,G27<621),AND(G27>724,G27<746),AND(G27>849,G27<871),AND(G27>974,G27<996),AND(G27>1099,G27<1121),AND(G27>1224,G27<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G28"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G28>1974,G28<1996),AND(G28>2099,G28<2121),AND(G28>2224,G28<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blockrahmen": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25:B26"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "C10:G14"
+      ],
+      "color": "#FF0000",
+      "needle": "Maß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Maß\",C10)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blockrahmen Furnier": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25:B26"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "C10:G14"
+      ],
+      "color": "#FF0000",
+      "needle": "Maß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Maß\",C10)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blockrahmen Blanche": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25:B27"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "C10:G14"
+      ],
+      "color": "#FF0000",
+      "needle": "Maß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Maß\",C10)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blockrahmen LINEA": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25:B26"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "C10:G14"
+      ],
+      "color": "#FF0000",
+      "needle": "Maß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Maß\",C10)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blendrahmen": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blendrahmen Blanche": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B25"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B25)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G20"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G20>599,G20<621),AND(G20>724,G20<746),AND(G20>849,G20<871),AND(G20>974,G20<996),AND(G20>1099,G20<1121),AND(G20>1224,G20<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>1974,G21<1996),AND(G21>2099,G21<2121),AND(G21>2224,G21<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "KLASSIK IL Holz": [
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>599,G21<621),AND(G21>724,G21<746),AND(G21>849,G21<871),AND(G21>974,G21<996),AND(G21>1099,G21<1121),AND(G21>1224,G21<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G22"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G22>1974,G22<1996),AND(G22>2099,G22<2121),AND(G22>2224,G22<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "KLASSIK IL Glas": [
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G21"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G21>599,G21<621),AND(G21>724,G21<746),AND(G21>849,G21<871),AND(G21>974,G21<996),AND(G21>1099,G21<1121),AND(G21>1224,G21<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G22"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G22>1974,G22<1996),AND(G22>2099,G22<2121),AND(G22>2224,G22<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "KLASSIK AL Holz": [
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>599,G24<621),AND(G24>724,G24<746),AND(G24>849,G24<871),AND(G24>974,G24<996),AND(G24>1099,G24<1121),AND(G24>1224,G24<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G25"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G25>1974,G25<1996),AND(G25>2099,G25<2121),AND(G25>2224,G25<2246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G28"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G28>1974,G28<1996),AND(G28>2099,G28<2121),AND(G28>2224,G28<2246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G27"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G27>599,G27<621),AND(G27>724,G27<746),AND(G27>849,G27<871),AND(G27>974,G27<996),AND(G27>1099,G27<1121),AND(G27>1224,G27<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G35"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G35>599,G35<621),AND(G35>724,G35<746),AND(G35>849,G35<871),AND(G35>974,G35<996),AND(G35>1099,G35<1121),AND(G35>1224,G35<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G36"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G36>1974,G36<1996),AND(G36>2099,G36<2121),AND(G36>2224,G36<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "SIMPLE IL Holz": [
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G22"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G22>599,G22<621),AND(G22>724,G22<746),AND(G22>849,G22<871),AND(G22>974,G22<996),AND(G22>1099,G22<1121),AND(G22>1224,G22<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>1974,G23<1996),AND(G23>2099,G23<2121),AND(G23>2224,G23<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF1 FU": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B44:B48"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B44)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G31"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G31>599,G31<621),AND(G31>724,G31<746),AND(G31>849,G31<871),AND(G31>974,G31<996),AND(G31>1099,G31<1121),AND(G31>1224,G31<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G32"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G32>1974,G32<1996),AND(G32>2099,G32<2121),AND(G32>2224,G32<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF2 FU": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B45:B46"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B45)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G31"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G31>599,G31<621),AND(G31>724,G31<746),AND(G31>849,G31<871),AND(G31>974,G31<996),AND(G31>1099,G31<1121),AND(G31>1224,G31<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G32"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G32>1974,G32<1996),AND(G32>2099,G32<2121),AND(G32>2224,G32<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF3 FU": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B48:B49"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B48)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G31"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G31>599,G31<621),AND(G31>724,G31<746),AND(G31>849,G31<871),AND(G31>974,G31<996),AND(G31>1099,G31<1121),AND(G31>1224,G31<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G32"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G32>1974,G32<1996),AND(G32>2099,G32<2121),AND(G32>2224,G32<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF4 FU": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B48:B49"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B48)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G31"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G31>599,G31<621),AND(G31>724,G31<746),AND(G31>849,G31<871),AND(G31>974,G31<996),AND(G31>1099,G31<1121),AND(G31>1224,G31<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G32"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G32>1974,G32<1996),AND(G32>2099,G32<2121),AND(G32>2224,G32<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF1 BLO": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B35:B36"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B35)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>599,G23<621),AND(G23>724,G23<746),AND(G23>849,G23<871),AND(G23>974,G23<996),AND(G23>1099,G23<1121),AND(G23>1224,G23<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>1974,G24<1996),AND(G24>2099,G24<2121),AND(G24>2224,G24<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF2 BLO": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B35:B36"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B35)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>599,G23<621),AND(G23>724,G23<746),AND(G23>849,G23<871),AND(G23>974,G23<996),AND(G23>1099,G23<1121),AND(G23>1224,G23<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>1974,G24<1996),AND(G24>2099,G24<2121),AND(G24>2224,G24<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF3 BLO": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B40:B41"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B40)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>599,G23<621),AND(G23>724,G23<746),AND(G23>849,G23<871),AND(G23>974,G23<996),AND(G23>1099,G23<1121),AND(G23>1224,G23<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>1974,G24<1996),AND(G24>2099,G24<2121),AND(G24>2224,G24<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "WF4 BLO": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B39:B40"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß\",B39)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>599,G23<621),AND(G23>724,G23<746),AND(G23>849,G23<871),AND(G23>974,G23<996),AND(G23>1099,G23<1121),AND(G23>1224,G23<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>1974,G24<1996),AND(G24>2099,G24<2121),AND(G24>2224,G24<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "GH FU Oberblende MKOQ": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B38"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B38)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G25"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G25>599,G25<621),AND(G25>724,G25<746),AND(G25>849,G25<871),AND(G25>974,G25<996),AND(G25>1099,G25<1121),AND(G25>1224,G25<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G26"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G26>1974,G26<1996),AND(G26>2099,G26<2121),AND(G26>2224,G26<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "GH FU MKMQ": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B38"
+      ],
+      "color": "#FF0000",
+      "needle": "Bekleidungsaußenmaß",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Bekleidungsaußenmaß\",B38)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G25"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G25>599,G25<621),AND(G25>724,G25<746),AND(G25>849,G25<871),AND(G25>974,G25<996),AND(G25>1099,G25<1121),AND(G25>1224,G25<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G26"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G26>1974,G26<1996),AND(G26>2099,G26<2121),AND(G26>2224,G26<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "GH BLO MKMQ": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B32"
+      ],
+      "color": "#FF0000",
+      "needle": "Rahmenaußenmaß max. 2750 mm",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Rahmenaußenmaß max. 2750 mm\",B32)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G23"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          599.0,
+          621.0
+        ],
+        [
+          724.0,
+          746.0
+        ],
+        [
+          849.0,
+          871.0
+        ],
+        [
+          974.0,
+          996.0
+        ],
+        [
+          1099.0,
+          1121.0
+        ],
+        [
+          1224.0,
+          1246.0
+        ]
+      ],
+      "formula": "OR(AND(G23>599,G23<621),AND(G23>724,G23<746),AND(G23>849,G23<871),AND(G23>974,G23<996),AND(G23>1099,G23<1121),AND(G23>1224,G23<1246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G24"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G24>1974,G24<1996),AND(G24>2099,G24<2121),AND(G24>2224,G24<2246))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Holz-Pendeltüre": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "B37"
+      ],
+      "color": "#FF0000",
+      "needle": "Höhe max. 2235 mm",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Höhe max. 2235 mm\",B37)))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "2-flg Standard": [
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G32"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1224.0,
+          1246.0
+        ],
+        [
+          1474.0,
+          1496.0
+        ],
+        [
+          1724.0,
+          1746.0
+        ],
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G32>1224,G32<1246),AND(G32>1474,G32<1496),AND(G32>1724,G32<1746),AND(G32>1974,G32<1996),AND(G32>2224,G32<2246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "number-ranges",
+      "ranges": [
+        "G33"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [
+        [
+          1974.0,
+          1996.0
+        ],
+        [
+          2099.0,
+          2121.0
+        ],
+        [
+          2224.0,
+          2246.0
+        ]
+      ],
+      "formula": "OR(AND(G33>1974,G33<1996),AND(G33>2099,G33<2121),AND(G33>2224,G33<2246))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "not-equal-any",
+      "ranges": [
+        "G41"
+      ],
+      "color": "#FF0000",
+      "needle": "",
+      "intervals": [],
+      "formula": "AND(C12=\"Classic\",OR(G41<>610,G41<>735,G41<>860,G41<>985,G41<>1110,G41<>1235))",
+      "gates": [
+        {
+          "cell": "C12",
+          "equals": "Classic"
+        }
+      ],
+      "values": [
+        610.0,
+        735.0,
+        860.0,
+        985.0,
+        1110.0,
+        1235.0
+      ]
+    },
+    {
+      "kind": "not-equal-any",
+      "ranges": [
+        "G43"
+      ],
+      "color": "#FF0000",
+      "needle": "",
+      "intervals": [],
+      "formula": "AND(C12=\"Classic\",OR(G43<>610,G43<>735,G43<>860,G43<>985,G43<>1110,G43<>1235))",
+      "gates": [
+        {
+          "cell": "C12",
+          "equals": "Classic"
+        }
+      ],
+      "values": [
+        610.0,
+        735.0,
+        860.0,
+        985.0,
+        1110.0,
+        1235.0
+      ]
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "H50:I50",
+        "H48:I48"
+      ],
+      "color": "#FF0000",
+      "needle": "möglich",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"möglich\",H48)))",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "H52:I52"
+      ],
+      "color": "#FFFF00",
+      "needle": "Klären",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Klären\",H52)))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Zylinder Rechner": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "D6:E6"
+      ],
+      "color": "#FF0000",
+      "needle": "TB Stärke",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"TB Stärke\",D6)))",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "PRÜM-LA": [
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "B94:F94"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(B94))>0",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "C95",
+        "C97"
+      ],
+      "color": "#F5F5F5",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(C95))>0",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "D95:F97"
+      ],
+      "color": "#FFFBE1",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(D95))>0",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "B99:F99"
+      ],
+      "color": "#F5D200",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(B99))>0",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "C100",
+        "C102"
+      ],
+      "color": "#F5F5F5",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(C100))>0",
+      "gates": [],
+      "values": []
+    },
+    {
+      "kind": "excel-expression",
+      "ranges": [
+        "D100:F102"
+      ],
+      "color": "#FFFBE1",
+      "needle": "",
+      "intervals": [],
+      "formula": "LEN(TRIM(D100))>0",
+      "gates": [],
+      "values": []
+    }
+  ],
+  "Blanche-LA": [
+    {
+      "kind": "contains-text",
+      "ranges": [
+        "E4:E13",
+        "E15",
+        "E17:E23"
+      ],
+      "color": "#FF0000",
+      "needle": "Lichtausschnitt nicht möglich",
+      "intervals": [],
+      "formula": "NOT(ISERROR(SEARCH(\"Lichtausschnitt nicht möglich\",E4)))",
+      "gates": [],
+      "values": []
+    }
+  ]
+}
